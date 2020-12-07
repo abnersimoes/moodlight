@@ -1,14 +1,12 @@
 import React from 'react'
 import PlayIcon from '@static/svg/icon/play.svg'
-import * as S from './styled'
+import Button, {ButtonProps} from '../../Button'
 
-type TransitionButtonProps = S.ColorButtonProps
-
-const TransitionButton = ({color}: TransitionButtonProps) => {
+const TransitionButton = (props: ButtonProps) => {
   return (
-    <S.ColorButton color={color}>
+    <Button {...props}>
       <PlayIcon />
-    </S.ColorButton>
+    </Button>
   )
 }
 

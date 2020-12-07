@@ -1,19 +1,25 @@
 import styled from 'styled-components'
 
+export interface ButtonStyledProps {
+  color: string
+  isActive?: boolean
+}
+
 const whiteRGB = '255, 255, 255'
 const blackRGB = '0, 0, 0'
-const dropShadowLight = `-6px -6px 10px rgba(${whiteRGB}, 0.06)`
-const dropShadowDark = `6px 6px 10px rgba(${blackRGB}, 0.02)`
+const dropShadowLight = `-6px -6px 10px rgba(${whiteRGB}, 0.2)`
+const dropShadowDark = `6px 6px 10px rgba(${blackRGB}, 0.05)`
 
-export const ButtonWrapper = styled.button`
+export const ButtonWrapper = styled.button<ButtonStyledProps>`
   width: 3.75rem;
   height: 3.75rem;
   border-radius: 50%;
   overflow: hidden;
   border: none;
   outline: none;
-  background-color: transparent;
-  filter: drop-shadow(${dropShadowLight}) drop-shadow(${dropShadowDark});
+  cursor: pointer;
+  background-color: ${({color}) => color};
+  filter: ${({isActive}) => (isActive ? `drop-shadow(${dropShadowLight}) drop-shadow(${dropShadowDark})` : 'none')};
   position: relative;
 
   :before,
@@ -29,7 +35,7 @@ export const ButtonWrapper = styled.button`
   }
 
   :before {
-    background: linear-gradient(-45deg, rgba(${whiteRGB}, 0.16) 0%, rgba(${whiteRGB}, 0) 50%, transparent 100%);
+    background: linear-gradient(-45deg, rgba(${whiteRGB}, 0.2) 0%, rgba(${whiteRGB}, 0) 50%, transparent 100%);
   }
 
   :after {
