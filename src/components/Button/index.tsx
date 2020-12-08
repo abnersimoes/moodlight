@@ -1,7 +1,7 @@
 import React, {ReactNode} from 'react'
-import * as S from './styled'
+import * as Styled from './styled'
 
-export interface ButtonProps extends S.ButtonStyledProps {
+export interface ButtonProps extends Styled.ButtonProps {
   onClick?: () => void
 }
 
@@ -10,7 +10,7 @@ export interface ButtonWrapperProps extends ButtonProps {
 }
 
 const Button = ({children, ...props}: ButtonWrapperProps) => {
-  return <S.ButtonWrapper {...props}>{children}</S.ButtonWrapper>
+  return <Styled.Button {...props}>{children}</Styled.Button>
 }
 
 export default Button

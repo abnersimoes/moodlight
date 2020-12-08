@@ -1,16 +1,12 @@
 import styled from 'styled-components'
+import * as Helpers from './helpers'
 
-export interface ButtonStyledProps {
+export interface ButtonProps {
   color: string
   isActive?: boolean
 }
 
-const whiteRGB = '255, 255, 255'
-const blackRGB = '0, 0, 0'
-const dropShadowLight = `-6px -6px 10px rgba(${whiteRGB}, 0.2)`
-const dropShadowDark = `6px 6px 10px rgba(${blackRGB}, 0.05)`
-
-export const ButtonWrapper = styled.button<ButtonStyledProps>`
+export const Button = styled.button<ButtonProps>`
   width: 3.75rem;
   height: 3.75rem;
   border-radius: 50%;
@@ -18,27 +14,12 @@ export const ButtonWrapper = styled.button<ButtonStyledProps>`
   border: none;
   outline: none;
   cursor: pointer;
-  background-color: ${({color}) => color};
-  filter: ${({isActive}) => (isActive ? `drop-shadow(${dropShadowLight}) drop-shadow(${dropShadowDark})` : 'none')};
+  background: ${Helpers.builderBackground};
+  box-shadow: ${Helpers.builderShadow};
+  transition: 0.1s all ease 0s;
   position: relative;
 
-  :before,
-  :after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-  }
-
-  :before {
-    background: linear-gradient(-45deg, rgba(${whiteRGB}, 0.2) 0%, rgba(${whiteRGB}, 0) 50%, transparent 100%);
-  }
-
-  :after {
-    background: linear-gradient(135deg, rgba(${blackRGB}, 0.02) 0%, rgba(${blackRGB}, 0) 50%, transparent 100%);
+  :hover {
+    box-shadow: ${({color}) => Helpers.builderDropShadow({color, blur: 9})};
   }
 `
