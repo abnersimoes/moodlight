@@ -39,5 +39,5 @@ export function builderBackground({isActive, color}: ButtonProps) {
 }
 
 export function builderShadow({isActive, color, blur = 12}: BuilderDropShadowProps) {
-  return isActive ? builderDropShadow({color, blur: 6}) : builderDropShadow({color, blur})
+  return isActive ? builderDropShadow({color, blur: 8}) : builderDropShadow({color, blur})
 }

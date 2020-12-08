@@ -6,3 +6,7 @@ export const NavWrapper = styled.nav`
   padding: 1rem;
   // background-color: rgba(0, 0, 0, 0.2);
 `
+
+export const FlexWrapper = styled.div`
+  display: flex;
+`
