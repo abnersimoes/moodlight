@@ -1,11 +1,12 @@
 import React from 'react'
 import PlayIcon from '@static/svg/icon/play.svg'
+import PauseIcon from '@static/svg/icon/pause.svg'
 import Button, {ButtonProps} from '../../Button'
 
-const TransitionButton = (props: ButtonProps) => {
+const TransitionButton = ({isActive, ...props}: ButtonProps) => {
   return (
-    <Button {...props}>
-      <PlayIcon />
+    <Button isActive={isActive} {...props}>
+      {isActive ? <PauseIcon /> : <PlayIcon />}
     </Button>
   )
 }
