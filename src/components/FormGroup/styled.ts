@@ -20,7 +20,7 @@ export const Input = styled.input.attrs({size: 1})`
   border-radius: 0.5rem;
   border: none;
   outline: none;
-  padding-left: 2rem;
+  padding: 0 1rem;
   color: white;
   background: ${Helpers.builderBackground};
   box-shadow: ${Helpers.builderShadow};

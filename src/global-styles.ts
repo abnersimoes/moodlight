@@ -44,6 +44,7 @@ export default createGlobalStyle`
     font-size: 16px;
     color: white;
     font-family: 'Oswald Bold', Arial, sans-serif;
+    background-color: black;
   }
 
   html,
@@ -52,58 +53,4 @@ export default createGlobalStyle`
   #gatsby-focus-wrapper {
     height: 100%
   }
-
-  // ul,
-  // ol {
-  //   margin: 0;
-  //   padding: 0;
-  //   list-style: none;
-  // }
-
-  // a {
-  //   color: inherit;
-  //   cursor: pointer;
-  // }
-
-  // button {
-  //   background-color: transparent;
-  //   color: inherit;
-  //   border-width: 0;
-  //   padding: 0;
-  //   cursor: pointer;
-  // }
-
-  // figure {
-  //   margin: 0;
-  // }
-
-  // input {
-  //   line-height: normal;
-  // }
-
-  // input::-moz-focus-inner {
-  //   border: 0;
-  //   padding: 0;
-  //   margin: 0;
-  // }
-
-  // h1, h2, h3, h4, h5, h6{
-  //   margin: 0;
-  //   font-size: inherit;
-  //   font-weight: inherit;
-  // }
-
-  // p {
-  //   margin: 0;
-  // }
-
-  // cite {
-  //   font-style: normal;
-  // }
-
-  // fieldset {
-  //   border-width: 0;
-  //   padding: 0;
-  //   margin: 0;
-  // }
 `

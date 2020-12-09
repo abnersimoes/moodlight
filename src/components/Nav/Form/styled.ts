@@ -3,4 +3,5 @@ import FormFieldComponent from '../../FormGroup/FormField'
 
 export const FormField = styled(FormFieldComponent)`
   width: 100%;
+  text-align: center;
 `

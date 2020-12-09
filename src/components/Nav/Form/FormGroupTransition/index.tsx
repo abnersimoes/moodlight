@@ -1,17 +1,20 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Col} from '../../../Grid'
 import * as Styled from '../../styled'
 import FormField from '../FormField'
 import TransitionButton from './TransitionButton'
-
-interface FormTransitionProps {
-  color: string
-}
+import {FormGroupProps} from '../types'
 
 export const fieldName = 'loop'
 
-const FormTransition = ({color}: FormTransitionProps) => {
+const FormGroupTransition = ({color, value}: FormGroupProps) => {
   const [isPlaying, setIsPlaying] = useState(true)
+
+  useEffect(() => {
+    const playingValue = parseInt(value)
+
+    console.log(playingValue)
+  }, [value])
 
   return (
     <Styled.Grid>
@@ -25,4 +28,4 @@ const FormTransition = ({color}: FormTransitionProps) => {
   )
 }
 
-export default FormTransition
+export default FormGroupTransition

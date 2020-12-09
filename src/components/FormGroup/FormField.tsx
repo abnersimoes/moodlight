@@ -8,16 +8,16 @@ export interface FormFieldProps {
   placeholder?: string
   id?: string
   type?: string
+  forwardRef?: RefObject<HTMLInputElement>
   autoFocus?: boolean
   isDisabled?: boolean
-  innerRef?: RefObject<HTMLInputElement>
 }
 
-function FormField({isDisabled, ...props}: FormFieldProps): ReactElement {
+function FormField({isDisabled, forwardRef: ref, ...props}: FormFieldProps): ReactElement {
   return (
     <Field {...props}>
       {({field, form: {isSubmitting}}: FieldProps) => (
-        <Styled.Input {...props} {...field} isDisabled={isDisabled} disabled={isDisabled || isSubmitting} />
+        <Styled.Input {...props} {...field} ref={ref} isDisabled={isDisabled} disabled={isDisabled || isSubmitting} />
       )}
     </Field>
   )
