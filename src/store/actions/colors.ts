@@ -1,8 +1,15 @@
 import {Colors, FETCH_COLORS, ColorsActions} from '../types'
 
-export function fetchColors(sectors: Colors): ColorsActions {
+export function fetchColors(colors: Colors): ColorsActions {
   return {
     type: FETCH_COLORS,
-    payload: sectors,
+    payload: colors,
+  }
+}
+
+export function setColors(colors: Colors): ColorsActions {
+  return {
+    type: FETCH_COLORS,
+    payload: colors,
   }
 }

@@ -6,14 +6,15 @@ import SEO from '../components/Seo'
 import Nav from '../components/Nav'
 
 function IndexPage() {
-  const color = useSelector(({colors}: RootState) => colors)
+  const {colors, loop, fadeOut} = useSelector((state: RootState) => state)
 
   return (
-    <Layout color={color.current}>
+    <Layout color={colors.current}>
       <SEO title="home" />
-      <Nav color={color.current} />
+      <Nav color={colors.current} loop={loop} fadeOut={fadeOut} />
     </Layout>
   )
+  return null
 }
 
 export default IndexPage

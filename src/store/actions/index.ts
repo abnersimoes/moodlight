@@ -1,4 +1,5 @@
-import {fetchSectors, setActiveSector} from './sectors'
-import fetchMap from './map'
+import {fetchColors, setColors} from './colors'
+import {setLoop} from './loop'
+import {setFadeOut} from './fade-out'
 
-export {fetchSectors, setActiveSector, fetchMap}
+export {fetchColors, setColors, setLoop, setFadeOut}

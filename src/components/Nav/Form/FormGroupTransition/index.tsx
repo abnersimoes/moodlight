@@ -11,9 +11,7 @@ const FormGroupTransition = ({color, value}: FormGroupProps) => {
   const [isPlaying, setIsPlaying] = useState(true)
 
   useEffect(() => {
-    const playingValue = parseInt(value)
-
-    console.log(playingValue)
+    console.log({value})
   }, [value])
 
   return (
