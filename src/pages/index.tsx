@@ -1,15 +1,17 @@
-import React, {useState} from 'react'
+import React from 'react'
+import {useSelector} from 'react-redux'
+import {RootState} from '../store/reducers'
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
 import Nav from '../components/Nav'
 
 function IndexPage() {
-  const [color, setColor] = useState('#efa21b')
+  const color = useSelector(({colors}: RootState) => colors)
 
   return (
-    <Layout color={color}>
+    <Layout color={color.current}>
       <SEO title="home" />
-      <Nav color={color} />
+      <Nav color={color.current} />
     </Layout>
   )
 }
