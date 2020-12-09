@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {Grid as GridComponent} from '../Grid'
 
 export const NavWrapper = styled.nav`
   width: 15.5rem;
@@ -7,6 +8,10 @@ export const NavWrapper = styled.nav`
   // background-color: rgba(0, 0, 0, 0.2);
 `
 
-export const FlexWrapper = styled.div`
-  display: flex;
+export const Grid = styled(GridComponent)`
+  padding-bottom: 1rem;
+
+  :last-of-type {
+    padding-bottom: 0;
+  }
 `

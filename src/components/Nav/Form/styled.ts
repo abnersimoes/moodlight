@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import FormGroupComponent from '../../FormGroup'
+import FormFieldComponent from '../../FormGroup/FormField'
 
-export const FormGroup = styled(FormGroupComponent)`
-  flex: 1;
+export const FormField = styled(FormFieldComponent)`
+  width: 100%;
 `

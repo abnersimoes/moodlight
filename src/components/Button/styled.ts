@@ -18,7 +18,6 @@ export const Button = styled.button<ButtonProps>`
   box-shadow: ${Helpers.builderShadow};
   transition: 0.1s all ease 0s;
   position: relative;
-  flex: 1 0 auto;
 
   :hover {
     box-shadow: ${({color}) => Helpers.builderDropShadow({color, blur: 6})};

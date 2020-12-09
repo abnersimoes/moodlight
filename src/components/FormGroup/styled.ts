@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import * as Helpers from './helpers'
 
 export const FormGroup = styled.div`
   width: 100%;
@@ -15,13 +16,14 @@ export const FormLabel = styled.label`
 
 export const Input = styled.input.attrs({size: 1})`
   font-size: 1.5rem;
-  height: 4rem;
-  background-color: white;
-  border-radius: 2.5rem;
+  height: 3.75rem;
+  border-radius: 0.5rem;
   border: none;
   outline: none;
   padding-left: 2rem;
-  color: black
+  color: white;
+  background: ${Helpers.builderBackground};
+  box-shadow: ${Helpers.builderShadow};
 
   ::placeholder,
   ::-webkit-input-placeholder {

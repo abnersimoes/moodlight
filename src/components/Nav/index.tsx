@@ -1,33 +1,33 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Formik, Form} from 'formik'
 import Logo from '@static/svg/logo.svg'
 import * as Styled from './styled'
-import TransitionButton from './Form/TransitionButton'
-import FormField from './Form/FormField'
+import {Col} from '../Grid'
+import FormTransition, {fieldName as transitionFieldName} from './Form/FormTransition'
 
 interface NavProps {
   color: string
 }
 
 function Nav({color}: NavProps) {
-  const [isPlaying, setIsPlaying] = useState(true)
-
   return (
     <Styled.NavWrapper>
       <Formik
-        initialValues={{loop: ''}}
+        initialValues={{[transitionFieldName]: ''}}
         // validationSchema={validationSchema}
         onSubmit={() => console.log('tei')}
         // validateOnBlur={false}
         enableReinitialize>
         <Form>
-          <Styled.FlexWrapper>
-            <TransitionButton color={color} isActive={isPlaying} onClick={() => setIsPlaying(!isPlaying)} />
-            <FormField name="loop" />
-          </Styled.FlexWrapper>
+          <FormTransition color={color} />
+
+          <Styled.Grid>
+            <Col>
+              <Logo />
+            </Col>
+          </Styled.Grid>
         </Form>
       </Formik>
-      <Logo />
     </Styled.NavWrapper>
   )
 }

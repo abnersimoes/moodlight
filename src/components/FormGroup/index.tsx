@@ -14,6 +14,7 @@ export interface FormGroupProps extends FormFieldProps {
 function FormGroup({
   name,
   label,
+  color,
   FieldComponent = FormField,
   LabelComponent = FormLabel,
   ErrorComponent = Styled.FormError,
@@ -25,7 +26,7 @@ function FormGroup({
   return (
     <Styled.FormGroup>
       <LabelComponent name={fieldName}>{label}</LabelComponent>
-      <FieldComponent type={type} name={fieldName} id={fieldName} {...props} />
+      <FieldComponent type={type} name={fieldName} id={fieldName} color={color} {...props} />
       <ErrorMessage name={fieldName} component={ErrorComponent} />
     </Styled.FormGroup>
   )
