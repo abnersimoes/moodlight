@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react'
 import {Provider} from 'react-redux'
+import store from '@store'
 import GlobalStyle from './src/global-styles'
-import store from './src/store'
 
 interface WrapWithProviderProps {
   element: ReactElement

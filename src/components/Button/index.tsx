@@ -9,8 +9,12 @@ export interface ButtonWrapperProps extends ButtonProps {
   children: ReactNode
 }
 
-const Button = ({children, ...props}: ButtonWrapperProps) => {
-  return <Styled.Button {...props}>{children}</Styled.Button>
+const Button = ({children, type = 'button', ...props}: ButtonWrapperProps) => {
+  return (
+    <Styled.Button type={type} {...props}>
+      {children}
+    </Styled.Button>
+  )
 }
 
 export default Button

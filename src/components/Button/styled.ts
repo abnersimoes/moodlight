@@ -3,6 +3,7 @@ import * as Helpers from './helpers'
 
 export interface ButtonProps {
   color: string
+  type?: 'button' | 'submit' | 'reset'
   isActive?: boolean
 }
 

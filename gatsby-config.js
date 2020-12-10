@@ -12,6 +12,9 @@ module.exports = {
       options: {
         alias: {
           '@static': './static',
+          '@store': './src/store',
+          '@hooks': './src/hooks',
+          '@components': './src/components',
         },
         extensions: [],
       },
@@ -25,13 +28,6 @@ module.exports = {
             removeViewBox: true,
           },
         },
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'images',
-        path: `${__dirname}/src/images`,
       },
     },
     'gatsby-transformer-sharp',
