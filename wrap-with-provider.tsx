@@ -1,6 +1,5 @@
 import React, {ReactElement} from 'react'
-import {Provider} from 'react-redux'
-import store from '@store'
+import GlobalContext from './src/contexts'
 import GlobalStyle from './src/global-styles'
 
 interface WrapWithProviderProps {
@@ -10,9 +9,9 @@ interface WrapWithProviderProps {
 // eslint-disable-next-line react/display-name
 export default ({element}: WrapWithProviderProps) => {
   return (
-    <>
+    <GlobalContext>
       <GlobalStyle />
-      <Provider store={store}>{element}</Provider>
-    </>
+      {element}
+    </GlobalContext>
   )
 }

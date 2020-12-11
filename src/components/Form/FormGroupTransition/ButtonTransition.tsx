@@ -1,7 +1,7 @@
 import React from 'react'
 import PlayIcon from '@static/svg/icon/play.svg'
 import PauseIcon from '@static/svg/icon/pause.svg'
-import Button, {ButtonProps} from '../../../Button'
+import Button, {ButtonProps} from '../../Button'
 
 const ButtonTransition = ({isActive, ...props}: ButtonProps) => {
   return (

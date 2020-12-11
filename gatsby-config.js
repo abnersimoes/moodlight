@@ -12,8 +12,7 @@ module.exports = {
       options: {
         alias: {
           '@static': './static',
-          '@store': './src/store',
-          '@hooks': './src/hooks',
+          '@contexts': './src/contexts',
           '@components': './src/components',
         },
         extensions: [],
@@ -41,7 +40,7 @@ module.exports = {
         background_color: '#663399',
         theme_color: '#663399',
         display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png',
+        icon: 'static/img/icon-manifest.png',
       },
     },
     // 'gatsby-plugin-offline',

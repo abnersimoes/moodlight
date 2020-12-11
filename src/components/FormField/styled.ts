@@ -1,22 +1,12 @@
 import styled from 'styled-components'
+import {FormFieldStyledProps} from './types'
 import * as Helpers from './helpers'
 
-export const FormGroup = styled.div`
+export const FormInput = styled.input<FormFieldStyledProps>`
   width: 100%;
-  display: flex;
-  flex-direction: column;
-`
-
-export const FormLabel = styled.label`
-  font-size: 1.4rem;
-  padding: 1rem 0 1rem 2rem;
-  color: black;
-  text-transform: lowercase;
-`
-
-export const Input = styled.input.attrs({size: 1})`
-  font-size: 1.5rem;
   height: 3.75rem;
+  font-size: 1.5rem;
+  text-align: center;
   border-radius: 0.5rem;
   border: none;
   outline: none;
@@ -44,12 +34,4 @@ export const Input = styled.input.attrs({size: 1})`
     font-family: Oswald Regular;
     font-size: 1.5rem;
   }
-`
-
-export const FormError = styled.span`
-  display: block;
-  color: red;
-  position: absolute;
-  bottom: 0;
-  left: 0;
 `

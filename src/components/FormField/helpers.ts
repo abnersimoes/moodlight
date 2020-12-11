@@ -1,15 +1,11 @@
 import {lighten, darken, saturate} from 'polished'
+import {FormFieldCommonProps} from './types'
 
-interface FieldProps {
-  color: string
-  isDisabled?: boolean
-}
-
-interface BuilderInnerShadowProps extends FieldProps {
+interface BuilderProps extends FormFieldCommonProps {
   blur?: number
 }
 
-function builderInnerShadow({color, blur = 12}: BuilderInnerShadowProps) {
+function builderInnerShadow({color, blur = 12}: BuilderProps) {
   const distance = `${blur / 2}px`
   const saturated = saturate(0.15, color)
   const light = lighten(0.125, saturated)
@@ -18,10 +14,10 @@ function builderInnerShadow({color, blur = 12}: BuilderInnerShadowProps) {
   return `inset ${distance} ${distance} ${blur}px ${dark}, inset -${distance} -${distance} ${blur}px ${light}`
 }
 
-export function builderShadow({isDisabled, color, blur = 12}: BuilderInnerShadowProps) {
+export function builderShadow({isDisabled, color, blur = 12}: BuilderProps) {
   return isDisabled ? builderInnerShadow({color, blur: 4}) : builderInnerShadow({color, blur})
 }
 
-export function builderBackground({isDisabled, color}: FieldProps) {
+export function builderBackground({isDisabled, color}: BuilderProps) {
   return isDisabled ? darken(0.05, color) : color
 }

@@ -15,10 +15,8 @@
     "paths": {
       "@static": ["static"],
       "@static/*": ["static/*"],
-      "@store": ["src/store"],
-      "@store/*": ["src/store/*"],
-      "@hooks": ["src/hooks"],
-      "@hooks/*": ["src/hooks/*"],
+      "@contexts": ["src/contexts"],
+      "@contexts/*": ["src/contexts/*"],
       "@components": ["src/components"],
       "@components/*": ["src/components/*"],
     },
