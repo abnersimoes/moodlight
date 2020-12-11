@@ -3,11 +3,11 @@ import {useColor} from '@contexts/color/hooks'
 import {Col} from '../../Grid'
 import * as Styled from '../styled'
 import FormField from '../../FormField'
-import ButtonTransition from './ButtonTransition'
+import ButtonPlay from './ButtonPlay'
 
-export const fieldName = 'loop'
+export const fieldName = 'play-time'
 
-const FormGroupTransition = () => {
+const FormGroupPlay = () => {
   const [colorState, setColorState] = useColor()
 
   const onToggleIsPlaying = useCallback(() => setColorState({...colorState, isPlaying: !colorState.isPlaying}), [colorState])
@@ -22,13 +22,13 @@ const FormGroupTransition = () => {
   return (
     <Styled.Grid>
       <Col>
-        <ButtonTransition color={colorState.color} isActive={colorState.isPlaying} onClick={onToggleIsPlaying} />
+        <ButtonPlay color={colorState.color} isActive={colorState.isPlaying} onClick={onToggleIsPlaying} />
       </Col>
       <Col flex={1}>
-        <FormField color={colorState.color} value={colorState.time} onChange={onSetTime} />
+        <FormField name={fieldName} color={colorState.color} value={colorState.time} onChange={onSetTime} />
       </Col>
     </Styled.Grid>
   )
 }
 
-export default FormGroupTransition
+export default FormGroupPlay

@@ -1,8 +1,8 @@
 import React from 'react'
 import PowerIcon from '@static/svg/icon/power.svg'
-import Button, {ButtonProps} from '../../../Button'
+import Button, {ButtonProps} from '../../Button'
 
-const ButtonFadeOut = ({isActive, ...props}: ButtonProps) => {
+const ButtonBlackout = ({isActive, ...props}: ButtonProps) => {
   return (
     <Button isActive={isActive} {...props}>
       <PowerIcon />
@@ -10,4 +10,4 @@ const ButtonFadeOut = ({isActive, ...props}: ButtonProps) => {
   )
 }
 
-export default ButtonFadeOut
+export default ButtonBlackout

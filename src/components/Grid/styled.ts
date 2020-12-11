@@ -6,6 +6,7 @@ interface GridProps {
 
 interface ColProps {
   flex?: number | number
+  alignSelf?: AlignSetting | 'flex-start' | 'flex-end'
 }
 
 export const Grid = styled.div<GridProps>(({flow = 'row'}) => ({
@@ -13,8 +14,9 @@ export const Grid = styled.div<GridProps>(({flow = 'row'}) => ({
   flexFlow: flow,
 }))
 
-export const Col = styled.div<ColProps>(({flex = 0}) => ({
+export const Col = styled.div<ColProps>(({flex = 0, alignSelf = 'start'}) => ({
   flex,
+  alignSelf,
   paddingLeft: '0.5rem',
   paddingRight: '0.5rem',
   ':first-of-type': {

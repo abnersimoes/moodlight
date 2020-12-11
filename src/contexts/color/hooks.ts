@@ -6,7 +6,7 @@ export function useColor(): [ColorState, SetColorState] {
   const {colorState, setColorState} = useContext(ColorContext)
 
   useEffect(() => {
-    console.log({colorState})
+    // console.log({colorState})
   }, [colorState])
 
   return [colorState, setColorState]

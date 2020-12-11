@@ -3,7 +3,7 @@ import PlayIcon from '@static/svg/icon/play.svg'
 import PauseIcon from '@static/svg/icon/pause.svg'
 import Button, {ButtonProps} from '../../Button'
 
-const ButtonTransition = ({isActive, ...props}: ButtonProps) => {
+const ButtonPlay = ({isActive, ...props}: ButtonProps) => {
   return (
     <Button isActive={isActive} {...props}>
       {isActive ? <PauseIcon /> : <PlayIcon />}
@@ -11,4 +11,4 @@ const ButtonTransition = ({isActive, ...props}: ButtonProps) => {
   )
 }
 
-export default ButtonTransition
+export default ButtonPlay
