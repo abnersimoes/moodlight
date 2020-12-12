@@ -1,14 +1,14 @@
 import React from 'react'
-import Layout from '@components/Layout'
-import SEO from '@components/Seo'
-import Nav from '@components/Nav'
+import TemplateMain from '@components/templates/TemplateMain'
+import Nav from '@components/organisms/Nav'
+import SEO from '@components/atoms/Seo'
 
 function IndexPage() {
   return (
-    <Layout>
+    <TemplateMain>
       <SEO title="home" />
       <Nav />
-    </Layout>
+    </TemplateMain>
   )
 }
 
