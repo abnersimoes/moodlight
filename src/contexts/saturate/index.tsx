@@ -4,10 +4,8 @@ import {SaturateContextProps} from './types'
 const DEFAULT_VALUE = {
   saturateState: {
     lvl: 2,
-    colors: [
-      ['#efa21b', '#ef0210'],
-      ['#efa210', '#ef021f'],
-    ],
+    min: 1,
+    max: 4,
   },
   setSaturateState: () => null,
 }

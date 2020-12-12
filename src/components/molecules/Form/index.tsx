@@ -1,12 +1,12 @@
 import React from 'react'
-import FormGroupPlay from './FormGroupPlay'
+import FormGroupLoop from './FormGroupLoop'
 import FormGroupBlackout from './FormGroupBlackout'
 import FormGroupSaturate from './FormGroupSaturate'
 
 function Form() {
   return (
     <>
-      <FormGroupPlay />
+      <FormGroupLoop />
       <FormGroupBlackout />
       <FormGroupSaturate />
     </>

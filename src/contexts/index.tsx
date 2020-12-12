@@ -1,12 +1,18 @@
 import React from 'react'
-import {ColorContextProvider} from './color'
+import {LoopContextProvider} from './loop'
 import {BlackoutContextProvider} from './blackout'
+import {SaturateContextProvider} from './saturate'
+import {ColorContextProvider} from './color'
 
 const GlobalContext: React.FC = ({children}) => {
   return (
-    <ColorContextProvider>
-      <BlackoutContextProvider>{children}</BlackoutContextProvider>
-    </ColorContextProvider>
+    <LoopContextProvider>
+      <BlackoutContextProvider>
+        <SaturateContextProvider>
+          <ColorContextProvider>{children}</ColorContextProvider>
+        </SaturateContextProvider>
+      </BlackoutContextProvider>
+    </LoopContextProvider>
   )
 }
 

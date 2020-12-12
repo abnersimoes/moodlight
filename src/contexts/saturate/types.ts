@@ -2,7 +2,8 @@ import {Dispatch, SetStateAction} from 'react'
 
 export interface SaturateState {
   lvl: number
-  colors: string[][]
+  min: number
+  max: number
 }
 
 export type SetSaturateState = Dispatch<SetStateAction<SaturateState>>

@@ -3,9 +3,7 @@ import {ColorContextProps} from './types'
 
 const DEFAULT_VALUE = {
   colorState: {
-    isPlaying: true,
-    color: '#efa21b',
-    time: '20',
+    current: '#690c5a',
   },
   setColorState: () => null,
 }

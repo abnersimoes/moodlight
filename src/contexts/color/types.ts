@@ -1,9 +1,8 @@
 import {Dispatch, SetStateAction} from 'react'
 
+export type Colors = string[]
 export interface ColorState {
-  isPlaying: boolean
-  color: string
-  time: string
+  current: string
 }
 
 export type SetColorState = Dispatch<SetStateAction<ColorState>>

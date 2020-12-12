@@ -27,4 +27,11 @@ export const Button = styled.button<ButtonProps>`
   :active {
     box-shadow: ${({color}) => Helpers.builderDropShadow({color, blur: 2})};
   }
+
+  :disabled {
+    transition: none;
+    box-shadow: none;
+    background: none;
+    opacity: 0.5;
+  }
 `

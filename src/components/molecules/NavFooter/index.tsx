@@ -5,8 +5,8 @@ import ButtonFullscreen from './ButtonFullscreen'
 import LinkRepo from '../LinkRepo'
 
 const NavFooter = () => {
+  const [color] = useColor()
   const [isFullscreenEnabled, setIsFullscreenEnabled] = useState(false)
-  const [colorState] = useColor()
   const isFullscreenSupported = !!document.body.requestFullscreen
 
   const onToggleIsFullscreenEnabled = useCallback(() => {
@@ -22,7 +22,7 @@ const NavFooter = () => {
     <Grid>
       {isFullscreenSupported && (
         <Col>
-          <ButtonFullscreen color={colorState.color} isActive={isFullscreenEnabled} onClick={onToggleIsFullscreenEnabled} />
+          <ButtonFullscreen color={color.current} isActive={isFullscreenEnabled} onClick={onToggleIsFullscreenEnabled} />
         </Col>
       )}
       <Col flex={1} alignSelf="flex-end">
