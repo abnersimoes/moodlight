@@ -10,7 +10,7 @@ export const fieldName = 'play-time'
 
 const FormGroupPlay = () => {
   const [loopState, setLoopState] = useLoop()
-  const [color] = useColor()
+  const [colorState] = useColor()
 
   const onToggleIsActive = useCallback(() => setLoopState({...loopState, isActive: !loopState.isActive}), [loopState])
 
@@ -24,10 +24,10 @@ const FormGroupPlay = () => {
   return (
     <Styled.Grid>
       <Col>
-        <ButtonLoop color={color.current} isActive={loopState.isActive} onClick={onToggleIsActive} />
+        <ButtonLoop colorState={colorState} isActive={loopState.isActive} onClick={onToggleIsActive} />
       </Col>
       <Col flex={1}>
-        <FormField name={fieldName} color={color.current} value={loopState.time} onChange={onSetTime} />
+        <FormField name={fieldName} colorState={colorState} value={loopState.time} onChange={onSetTime} />
       </Col>
     </Styled.Grid>
   )

@@ -18,7 +18,7 @@ export const IconIndicator = styled.div<IconIndicatorProps>`
   background-color: white;
   border-radius: 1rem;
   opacity: ${({isFilled}) => (isFilled ? '1' : '0.25')};
-  transition: 0.2s opacity ease-in 0s;
+  transition: 0.2s opacity ease-in-out 0s;
 
   :nth-child(1) {
     height: 40%;

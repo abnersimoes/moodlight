@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import * as Helpers from './helpers'
 
 export interface ButtonProps {
-  color: string
+  colorState: Helpers.ColorState
   type?: 'button' | 'submit' | 'reset'
   isActive?: boolean
 }
@@ -17,11 +17,11 @@ export const Button = styled.button<ButtonProps>`
   cursor: pointer;
   background: ${Helpers.builderBackground};
   box-shadow: ${Helpers.builderShadow};
-  transition: 0.1s all ease 0s;
+  transition: ${({colorState: {transition}}) => `${transition}s all ease-in-out 0s`};
   position: relative;
 
   :active {
-    box-shadow: ${({color}) => Helpers.builderDropShadow({color, blur: 2})};
+    box-shadow: ${({colorState}) => Helpers.builderDropShadow({colorState, blur: 2})};
   }
 
   :disabled {

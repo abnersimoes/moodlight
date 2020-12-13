@@ -7,9 +7,9 @@ interface TemplateMainProps {
 }
 
 function TemplateMain({children}: TemplateMainProps) {
-  const [color] = useColor()
+  const [colorState] = useColor()
 
-  return <Styled.TemplateMainWrapper color={color.current}>{children}</Styled.TemplateMainWrapper>
+  return <Styled.TemplateMainWrapper colorState={colorState}>{children}</Styled.TemplateMainWrapper>
 }
 
 export default TemplateMain

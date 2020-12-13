@@ -9,7 +9,7 @@ import ButtonBlackout from './ButtonBlackout'
 export const fieldName = 'blackout-time'
 
 const FormGroupBlackout = () => {
-  const [color] = useColor()
+  const [colorState] = useColor()
   const [blackoutState, setBlackoutState] = useBlackout()
 
   const onToggleIsActive = useCallback(() => setBlackoutState({...blackoutState, isActive: !blackoutState.isActive}), [blackoutState])
@@ -24,10 +24,10 @@ const FormGroupBlackout = () => {
   return (
     <Styled.Grid>
       <Col>
-        <ButtonBlackout color={color.current} isActive={blackoutState.isActive} onClick={onToggleIsActive} />
+        <ButtonBlackout colorState={colorState} isActive={blackoutState.isActive} onClick={onToggleIsActive} />
       </Col>
       <Col flex={1}>
-        <FormField name={fieldName} color={color.current} value={blackoutState.time} onChange={onSetTime} />
+        <FormField name={fieldName} colorState={colorState} value={blackoutState.time} onChange={onSetTime} />
       </Col>
     </Styled.Grid>
   )

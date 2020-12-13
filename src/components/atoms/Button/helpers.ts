@@ -1,7 +1,12 @@
 import {lighten, darken, saturate} from 'polished'
 
+export interface ColorState {
+  current: string
+  transition: number
+}
+
 interface ButtonProps {
-  color: string
+  colorState: ColorState
   disabled?: boolean
   isActive?: boolean
 }
@@ -10,7 +15,7 @@ interface BuilderDropShadowProps extends ButtonProps {
   blur?: number
 }
 
-function builderBgConvex({color}: ButtonProps) {
+function builderBgConvex({colorState: {current: color}}: ButtonProps) {
   const saturated = saturate(0.15, color)
   const light = lighten(0.05, saturated)
   const dark = darken(0.07, color)
@@ -18,7 +23,7 @@ function builderBgConvex({color}: ButtonProps) {
   return `linear-gradient(145deg, ${light}, ${dark})`
 }
 
-function builderBgConcave({color}: ButtonProps) {
+function builderBgConcave({colorState: {current: color}}: ButtonProps) {
   const saturated = saturate(0.15, color)
   const light = lighten(0.05, saturated)
   const dark = darken(0.08, color)
@@ -26,7 +31,7 @@ function builderBgConcave({color}: ButtonProps) {
   return `linear-gradient(145deg, ${dark}, ${light})`
 }
 
-export function builderDropShadow({color, blur = 12}: BuilderDropShadowProps) {
+export function builderDropShadow({colorState: {current: color}, blur = 12}: BuilderDropShadowProps) {
   const distance = `${blur / 2}px`
   const saturated = saturate(0.15, color)
   const light = lighten(0.125, saturated)
@@ -35,10 +40,10 @@ export function builderDropShadow({color, blur = 12}: BuilderDropShadowProps) {
   return `${distance} ${distance} ${blur}px ${dark}, -${distance} -${distance} ${blur}px ${light}`
 }
 
-export function builderBackground({isActive, disabled, color}: ButtonProps) {
-  return isActive || disabled ? builderBgConcave({color}) : builderBgConvex({color})
+export function builderBackground({isActive, disabled, colorState}: ButtonProps) {
+  return isActive || disabled ? builderBgConcave({colorState}) : builderBgConvex({colorState})
 }
 
-export function builderShadow({isActive, disabled, color, blur = 12}: BuilderDropShadowProps) {
-  return isActive || disabled ? builderDropShadow({color, blur: 2}) : builderDropShadow({color, blur})
+export function builderShadow({isActive, disabled, colorState, blur = 12}: BuilderDropShadowProps) {
+  return isActive || disabled ? builderDropShadow({colorState, blur: 2}) : builderDropShadow({colorState, blur})
 }

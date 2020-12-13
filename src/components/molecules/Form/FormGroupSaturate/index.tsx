@@ -8,7 +8,7 @@ import ButtonSaturateLow from './ButtonSaturateLow'
 import HighlightSaturateBar from './HighlightSaturateBar'
 
 const FormGroupSaturate = () => {
-  const [color] = useColor()
+  const [colorState] = useColor()
   const [saturateState, setSaturateState] = useSaturate()
   const [isMinLvl, setIsMinLvl] = useState(true)
   const [isMaxLvl, setIsMaxLvl] = useState(true)
@@ -33,13 +33,13 @@ const FormGroupSaturate = () => {
   return (
     <Styled.Grid flowAlign="center" counterFlowAlign="center">
       <Col>
-        <ButtonSaturateLow color={color.current} isDisabled={isMinLvl} onClick={() => onSetSaturateLvl(saturateState.lvl - 1)} />
+        <ButtonSaturateLow colorState={colorState} isDisabled={isMinLvl} onClick={() => onSetSaturateLvl(saturateState.lvl - 1)} />
       </Col>
       <Col flex={1}>
         <HighlightSaturateBar lvl={saturateState.lvl} max={saturateState.max} />
       </Col>
       <Col>
-        <ButtonSaturateHigh color={color.current} isDisabled={isMaxLvl} onClick={() => onSetSaturateLvl(saturateState.lvl + 1)} />
+        <ButtonSaturateHigh colorState={colorState} isDisabled={isMaxLvl} onClick={() => onSetSaturateLvl(saturateState.lvl + 1)} />
       </Col>
     </Styled.Grid>
   )

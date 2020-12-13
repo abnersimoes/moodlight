@@ -1,8 +1,7 @@
 import {Dispatch, SetStateAction} from 'react'
-
-export type Colors = string[]
 export interface ColorState {
   current: string
+  transition: number
 }
 
 export type SetColorState = Dispatch<SetStateAction<ColorState>>
