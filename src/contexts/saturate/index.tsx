@@ -1,13 +1,13 @@
 import React, {createContext, useState} from 'react'
-import {SaturateContextProps} from './types'
+import {SaturateContextProps, SaturateState} from './types'
 
 const DEFAULT_VALUE = {
   saturateState: {
-    lvl: 2,
     min: 1,
     max: 4,
+    lvl: 2,
   },
-  setSaturateState: () => null,
+  setSaturateState: (state: SaturateState) => state,
 }
 
 const SaturateContext = createContext<SaturateContextProps>(DEFAULT_VALUE)

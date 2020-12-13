@@ -2,6 +2,7 @@ import {lighten, darken, saturate} from 'polished'
 
 interface ButtonProps {
   color: string
+  disabled?: boolean
   isActive?: boolean
 }
 
@@ -34,10 +35,10 @@ export function builderDropShadow({color, blur = 12}: BuilderDropShadowProps) {
   return `${distance} ${distance} ${blur}px ${dark}, -${distance} -${distance} ${blur}px ${light}`
 }
 
-export function builderBackground({isActive, color}: ButtonProps) {
-  return isActive ? builderBgConcave({color}) : builderBgConvex({color})
+export function builderBackground({isActive, disabled, color}: ButtonProps) {
+  return isActive || disabled ? builderBgConcave({color}) : builderBgConvex({color})
 }
 
-export function builderShadow({isActive, color, blur = 12}: BuilderDropShadowProps) {
-  return isActive ? builderDropShadow({color, blur: 8}) : builderDropShadow({color, blur})
+export function builderShadow({isActive, disabled, color, blur = 12}: BuilderDropShadowProps) {
+  return isActive || disabled ? builderDropShadow({color, blur: 2}) : builderDropShadow({color, blur})
 }

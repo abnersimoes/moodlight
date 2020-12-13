@@ -20,18 +20,13 @@ export const Button = styled.button<ButtonProps>`
   transition: 0.1s all ease 0s;
   position: relative;
 
-  :hover {
-    box-shadow: ${({color}) => Helpers.builderDropShadow({color, blur: 6})};
-  }
-
   :active {
     box-shadow: ${({color}) => Helpers.builderDropShadow({color, blur: 2})};
   }
 
   :disabled {
-    transition: none;
-    box-shadow: none;
-    background: none;
-    opacity: 0.5;
+    * {
+      opacity: 0.5;
+    }
   }
 `

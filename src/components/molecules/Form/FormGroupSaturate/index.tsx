@@ -5,6 +5,7 @@ import {Col} from '@components/atoms/Grid'
 import * as Styled from '../styled'
 import ButtonSaturateHigh from './ButtonSaturateHigh'
 import ButtonSaturateLow from './ButtonSaturateLow'
+import HighlightSaturateBar from './HighlightSaturateBar'
 
 const FormGroupSaturate = () => {
   const [color] = useColor()
@@ -30,12 +31,12 @@ const FormGroupSaturate = () => {
   )
 
   return (
-    <Styled.Grid>
+    <Styled.Grid flowAlign="center" counterFlowAlign="center">
       <Col>
         <ButtonSaturateLow color={color.current} isDisabled={isMinLvl} onClick={() => onSetSaturateLvl(saturateState.lvl - 1)} />
       </Col>
       <Col flex={1}>
-        <span>teste</span>
+        <HighlightSaturateBar lvl={saturateState.lvl} max={saturateState.max} />
       </Col>
       <Col>
         <ButtonSaturateHigh color={color.current} isDisabled={isMaxLvl} onClick={() => onSetSaturateLvl(saturateState.lvl + 1)} />
