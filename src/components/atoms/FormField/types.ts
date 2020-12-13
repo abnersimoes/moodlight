@@ -13,6 +13,7 @@ export interface FormFieldCommonProps {
 
 export interface FormFieldProps extends FormFieldCommonProps {
   name: string
+  type?: string
   value?: string
 }
 

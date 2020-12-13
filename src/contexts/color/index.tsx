@@ -4,7 +4,7 @@ import {ColorContextProps} from './types'
 const DEFAULT_VALUE = {
   colorState: {
     current: '#690c5a',
-    transition: 0.2,
+    transition: 1,
   },
   setColorState: () => null,
 }

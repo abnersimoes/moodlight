@@ -16,6 +16,15 @@ export function useLoop(): [LoopState, SetLoopState] {
   const [color, setColor] = useColor()
   const [colorPalette, setColorPalette] = useState(builderColors(saturate.lvl))
   const [indexPalette, setIndexPalette] = useState<number>(0)
+  const [timeByPalette, setTimeByPalette] = useState<number>(0)
+
+  useEffect(() => {
+    const {time} = loopState
+    const transition = parseInt(time) / colorPalette.length
+
+    setTimeByPalette(transition)
+    setColor({...color, transition})
+  }, [loopState.time])
 
   useMemo(() => {
     const colorsBuilded = builderColors(saturate.lvl)
@@ -23,8 +32,7 @@ export function useLoop(): [LoopState, SetLoopState] {
   }, [saturate.lvl])
 
   useEffect(() => {
-    const {time, isActive} = loopState
-    const timeInterval = parseInt(time) * 1000
+    const {isActive} = loopState
     const lastIndexColor = colorPalette.length - 1
     let interval: number
 
@@ -34,7 +42,7 @@ export function useLoop(): [LoopState, SetLoopState] {
           return setIndexPalette(indexPalette + 1)
         }
         return setIndexPalette(0)
-      }, timeInterval)
+      }, timeByPalette * 1000)
     }
 
     return () => {
@@ -42,7 +50,7 @@ export function useLoop(): [LoopState, SetLoopState] {
         clearInterval(interval)
       }
     }
-  }, [loopState, indexPalette, colorPalette])
+  }, [loopState.isActive, timeByPalette, indexPalette, colorPalette])
 
   useEffect(() => {
     setColor({...color, current: colorPalette[indexPalette]})

@@ -17,7 +17,7 @@ export const Button = styled.button<ButtonProps>`
   cursor: pointer;
   background: ${Helpers.builderBackground};
   box-shadow: ${Helpers.builderShadow};
-  transition: ${({colorState: {transition}}) => `${transition}s all ease-in-out 0s`};
+  transition: ${({colorState: {transition}}) => `${transition}s all linear 0s`};
   position: relative;
 
   :active {

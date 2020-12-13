@@ -7,7 +7,7 @@ function Nav() {
   return (
     <Styled.NavWrapper>
       <Form />
-      <NavFooter />
+      {/* <NavFooter /> */}
     </Styled.NavWrapper>
   )
 }
