@@ -15,9 +15,9 @@ export const Button = styled.button<ButtonProps>`
   border: none;
   outline: none;
   cursor: pointer;
-  background: ${Helpers.builderBackground};
   box-shadow: ${Helpers.builderShadow};
-  transition: ${({colorState: {transition}}) => `${transition}s all linear 0s`};
+  background-color: ${({colorState: {current}}) => current};
+  transition: ${({colorState: {transition}}) => `all ${transition * 2}s linear 0s`};
   position: relative;
 
   :active {
@@ -29,4 +29,24 @@ export const Button = styled.button<ButtonProps>`
       opacity: 0.5;
     }
   }
+
+  * {
+    position: relative;
+    z-index: 1;
+  }
+
+  :before,
+  :after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+  }
+
+  ${props => Helpers.builderFaceEffect(props)}
 `

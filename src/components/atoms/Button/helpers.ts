@@ -15,33 +15,42 @@ interface BuilderDropShadowProps extends ButtonProps {
   blur?: number
 }
 
-function builderBgConvex({colorState: {current: color}}: ButtonProps) {
-  const saturated = saturate(0.15, color)
-  const light = lighten(0.05, saturated)
-  const dark = darken(0.07, color)
+const blackAlpha = 'rgba(0, 0, 0, 0.07)'
+const whiteAlpha = 'rgba(255, 255, 255, 0.07)'
 
-  return `linear-gradient(145deg, ${light}, ${dark})`
+function builderFaceConvex() {
+  return `
+    :before {
+      background: linear-gradient(145deg, transparent, ${blackAlpha});
+    }
+    :after {
+      background: linear-gradient(145deg, ${whiteAlpha}, transparent);
+    }
+  `
 }
 
-function builderBgConcave({colorState: {current: color}}: ButtonProps) {
-  const saturated = saturate(0.15, color)
-  const light = lighten(0.05, saturated)
-  const dark = darken(0.08, color)
-
-  return `linear-gradient(145deg, ${dark}, ${light})`
+function builderFaceConcave() {
+  return `
+    :before {
+      background: linear-gradient(145deg, ${blackAlpha}, transparent);
+    }
+    :after {
+      background: linear-gradient(145deg, transparent, ${whiteAlpha});
+    }
+  `
 }
 
 export function builderDropShadow({colorState: {current: color}, blur = 12}: BuilderDropShadowProps) {
   const distance = `${blur / 2}px`
-  const saturated = saturate(0.15, color)
-  const light = lighten(0.125, saturated)
-  const dark = darken(0.095, color)
+  const saturated = saturate(0.075, color)
+  const light = lighten(0.075, saturated)
+  const dark = darken(0.075, color)
 
   return `${distance} ${distance} ${blur}px ${dark}, -${distance} -${distance} ${blur}px ${light}`
 }
 
-export function builderBackground({isActive, disabled, colorState}: ButtonProps) {
-  return isActive || disabled ? builderBgConcave({colorState}) : builderBgConvex({colorState})
+export function builderFaceEffect({isActive, disabled}: ButtonProps) {
+  return isActive || disabled ? builderFaceConcave() : builderFaceConvex()
 }
 
 export function builderShadow({isActive, disabled, colorState, blur = 12}: BuilderDropShadowProps) {

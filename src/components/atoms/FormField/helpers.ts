@@ -7,9 +7,9 @@ interface BuilderProps extends FormFieldCommonProps {
 
 function builderInnerShadow({colorState: {current: color}, blur = 12}: BuilderProps) {
   const distance = `${blur / 2}px`
-  const saturated = saturate(0.15, color)
-  const light = lighten(0.125, saturated)
-  const dark = darken(0.095, color)
+  const saturated = saturate(0.075, color)
+  const light = lighten(0.075, saturated)
+  const dark = darken(0.075, color)
 
   return `inset ${distance} ${distance} ${blur}px ${dark}, inset -${distance} -${distance} ${blur}px ${light}`
 }

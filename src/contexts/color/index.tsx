@@ -1,9 +1,12 @@
 import React, {createContext, useState} from 'react'
 import {ColorContextProps} from './types'
+import {colors} from './constants'
+
+const initialColor = colors[1][0]
 
 const DEFAULT_VALUE = {
   colorState: {
-    current: '#690c5a',
+    current: initialColor,
     transition: 1,
   },
   setColorState: () => null,

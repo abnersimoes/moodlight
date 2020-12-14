@@ -14,6 +14,7 @@ export const FormInput = styled.input<FormFieldStyledProps>`
   color: white;
   background: ${Helpers.builderBackground};
   box-shadow: ${Helpers.builderShadow};
+  transition: ${({colorState: {transition}}) => `all ${transition * 2}s linear 0s`};
 
   ::placeholder,
   ::-webkit-input-placeholder {
