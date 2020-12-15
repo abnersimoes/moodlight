@@ -1,5 +1,6 @@
 import React, {useCallback} from 'react'
 import {useColor} from '@contexts/color/hooks'
+import {useLoop} from '@contexts/loop/hooks'
 import {useBlackout} from '@contexts/blackout/hooks'
 import {Col} from '@components/atoms/Grid'
 import FormField from '@components/atoms/FormField'
@@ -9,14 +10,23 @@ import ButtonBlackout from './ButtonBlackout'
 export const fieldName = 'blackout-time'
 
 const FormGroupBlackout = () => {
-  const [colorState] = useColor()
   const [blackoutState, setBlackoutState] = useBlackout()
+  const [{isActive: isActiveLoop}] = useLoop()
+  const [color] = useColor()
+  const {isActive, timeToEnabled, timeToDisabled} = blackoutState
 
   const onToggleIsActive = useCallback(() => setBlackoutState({...blackoutState, isActive: !blackoutState.isActive}), [blackoutState])
 
-  const onSetTime = useCallback(
-    ({target: {value: time}}) => {
-      setBlackoutState({...blackoutState, time})
+  const onSetTimeToEnabled = useCallback(
+    ({target: {value: timeToEnabled}}) => {
+      setBlackoutState({...blackoutState, timeToEnabled})
+    },
+    [blackoutState]
+  )
+
+  const onSetTimeToDisabled = useCallback(
+    ({target: {value: timeToDisabled}}) => {
+      setBlackoutState({...blackoutState, timeToDisabled})
     },
     [blackoutState]
   )
@@ -24,10 +34,13 @@ const FormGroupBlackout = () => {
   return (
     <Styled.Grid>
       <Col>
-        <ButtonBlackout colorState={colorState} isActive={blackoutState.isActive} onClick={onToggleIsActive} />
+        <ButtonBlackout colorState={color} isActive={blackoutState.isActive} isDisabled={!isActiveLoop} onClick={onToggleIsActive} />
       </Col>
       <Col flex={1}>
-        <FormField name={fieldName} colorState={colorState} value={blackoutState.time} onChange={onSetTime} />
+        <FormField name={fieldName} colorState={color} value={timeToEnabled} isDisabled={!isActive} onChange={onSetTimeToEnabled} />
+      </Col>
+      <Col flex={1}>
+        <FormField name={fieldName} colorState={color} value={timeToDisabled} isDisabled={!isActive} onChange={onSetTimeToDisabled} />
       </Col>
     </Styled.Grid>
   )

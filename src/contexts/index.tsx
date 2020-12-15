@@ -4,7 +4,7 @@ import {BlackoutContextProvider} from './blackout'
 import {SaturateContextProvider} from './saturate'
 import {ColorContextProvider} from './color'
 
-const GlobalContext: React.FC = ({children}) => {
+function GlobalContext({children}) {
   return (
     <LoopContextProvider>
       <BlackoutContextProvider>

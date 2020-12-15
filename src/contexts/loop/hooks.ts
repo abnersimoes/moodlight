@@ -32,23 +32,17 @@ export function useLoop(): [LoopState, SetLoopState] {
   }, [saturate.lvl])
 
   useEffect(() => {
-    const {isActive} = loopState
     const lastIndexColor = colorPalette.length - 1
-    let interval: number
+    let loopTimeout: number
 
-    if (isActive) {
-      interval = setInterval(() => {
-        if (indexPalette < lastIndexColor) {
-          return setIndexPalette(indexPalette + 1)
-        }
-        return setIndexPalette(0)
+    if (loopState.isActive) {
+      loopTimeout = setTimeout(() => {
+        indexPalette < lastIndexColor ? setIndexPalette(indexPalette + 1) : setIndexPalette(0)
       }, timeByPalette * 1000)
     }
 
     return () => {
-      if (interval) {
-        clearInterval(interval)
-      }
+      if (loopTimeout) clearTimeout(loopTimeout)
     }
   }, [loopState.isActive, timeByPalette, indexPalette, colorPalette])
 

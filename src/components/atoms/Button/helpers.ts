@@ -50,7 +50,11 @@ export function builderDropShadow({colorState: {current: color}, blur = 12}: Bui
 }
 
 export function builderFaceEffect({isActive, disabled}: ButtonProps) {
-  return isActive || disabled ? builderFaceConcave() : builderFaceConvex()
+  if (disabled) {
+    return 'none'
+  }
+
+  return isActive ? builderFaceConcave() : builderFaceConvex()
 }
 
 export function builderShadow({isActive, disabled, colorState, blur = 12}: BuilderDropShadowProps) {

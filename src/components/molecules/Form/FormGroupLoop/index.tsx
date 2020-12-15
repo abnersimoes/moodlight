@@ -1,5 +1,6 @@
 import React, {useCallback} from 'react'
 import {useLoop} from '@contexts/loop/hooks'
+import {useBlackout} from '@contexts/blackout/hooks'
 import {useColor} from '@contexts/color/hooks'
 import {Col} from '@components/atoms/Grid'
 import FormField from '@components/atoms/FormField'
@@ -10,9 +11,16 @@ export const fieldName = 'play-time'
 
 const FormGroupPlay = () => {
   const [loopState, setLoopState] = useLoop()
-  const [colorState] = useColor()
+  const [blackout, setBlackout] = useBlackout()
+  const [color] = useColor()
+  const {isActive, time} = loopState
 
-  const onToggleIsActive = useCallback(() => setLoopState({...loopState, isActive: !loopState.isActive}), [loopState])
+  const onToggleIsActive = useCallback(() => {
+    if (loopState.isActive) {
+      setBlackout({...blackout, isActive: false})
+    }
+    setLoopState({...loopState, isActive: !loopState.isActive})
+  }, [loopState, blackout])
 
   const onSetTime = useCallback(
     ({target: {value: time}}) => {
@@ -24,10 +32,10 @@ const FormGroupPlay = () => {
   return (
     <Styled.Grid>
       <Col>
-        <ButtonLoop colorState={colorState} isActive={loopState.isActive} onClick={onToggleIsActive} />
+        <ButtonLoop colorState={color} isActive={isActive} onClick={onToggleIsActive} />
       </Col>
       <Col flex={1}>
-        <FormField name={fieldName} colorState={colorState} value={loopState.time} onChange={onSetTime} />
+        <FormField name={fieldName} colorState={color} value={time} isDisabled={!isActive} onChange={onSetTime} />
       </Col>
     </Styled.Grid>
   )

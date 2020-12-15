@@ -20,16 +20,6 @@ export const Button = styled.button<ButtonProps>`
   transition: ${({colorState: {transition}}) => `all ${transition * 2}s linear 0s`};
   position: relative;
 
-  :active {
-    box-shadow: ${({colorState}) => Helpers.builderDropShadow({colorState, blur: 2})};
-  }
-
-  :disabled {
-    * {
-      opacity: 0.5;
-    }
-  }
-
   * {
     position: relative;
     z-index: 1;
@@ -46,6 +36,18 @@ export const Button = styled.button<ButtonProps>`
     bottom: 0;
     left: 0;
     z-index: 0;
+  }
+
+  :active {
+    box-shadow: ${({colorState}) => Helpers.builderDropShadow({colorState, blur: 2})};
+  }
+
+  :disabled {
+    cursor: default;
+
+    * {
+      opacity: 0.5;
+    }
   }
 
   ${props => Helpers.builderFaceEffect(props)}
