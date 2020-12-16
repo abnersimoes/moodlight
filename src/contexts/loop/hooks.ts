@@ -5,36 +5,36 @@ import LoopContext from '.'
 
 export function useLoop(): [LoopState, SetLoopState] {
   const {loopState, setLoopState} = useContext(LoopContext)
-  const [color, setColor] = useColor()
   const [indexPalette, setIndexPalette] = useState<number>(0)
   const [timeByPalette, setTimeByPalette] = useState<number>(0)
+  const [color, setColor] = useColor()
+  const paletteLength = color.palette.length
+  const lastIndexOfPalette = paletteLength - 1
 
   useEffect(() => {
     const {time} = loopState
-    const transition = parseInt(time) / color.palette.length
+    const transition = parseInt(time) / paletteLength
 
     setTimeByPalette(transition)
     setColor({...color, transition})
-  }, [loopState.time, color.palette])
+  }, [loopState.time])
 
   useEffect(() => {
-    const lastIndexColor = color.palette.length - 1
     let loopTimeout: number
 
     if (loopState.isActive) {
       loopTimeout = setTimeout(() => {
-        indexPalette < lastIndexColor ? setIndexPalette(indexPalette + 1) : setIndexPalette(0)
+        const nextIndexPalette = indexPalette < lastIndexOfPalette ? indexPalette + 1 : 0
+
+        setIndexPalette(nextIndexPalette)
+        setColor({...color, current: color.palette[nextIndexPalette]})
       }, timeByPalette * 1000)
     }
 
     return () => {
       if (loopTimeout) clearTimeout(loopTimeout)
     }
-  }, [loopState.isActive, timeByPalette, indexPalette, color.palette])
-
-  useEffect(() => {
-    setColor({...color, current: color.palette[indexPalette]})
-  }, [color.palette, indexPalette])
+  }, [loopState.isActive, color, timeByPalette, indexPalette])
 
   return [loopState, setLoopState]
 }
