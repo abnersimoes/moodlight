@@ -1,42 +1,30 @@
 import {useContext, useEffect} from 'react'
-import {useLoop} from '@contexts/loop/hooks'
-import {useColor} from '@contexts/color/hooks'
 import {BlackoutState, SetBlackoutState} from './types'
 import BlackoutContext from '.'
 
 export function useBlackout(): [BlackoutState, SetBlackoutState] {
   const {blackoutState, setBlackoutState} = useContext(BlackoutContext)
-  const [loop, setLoop] = useLoop()
-  const [, setColor] = useColor()
 
-  // useEffect(() => {
-  //   let blackoutTimeout: number
+  useEffect(() => {
+    let blackoutTimeout: number
 
-  //   if (blackoutState.isActive) {
-  //     if (loop.isActive) {
-  //       const {timeToEnabled} = blackoutState
-  //       const blackoutTimeToEnabled = parseInt(timeToEnabled) * 1000
+    if (blackoutState.isActive) {
+      const {timeToEnabled, timeToDisabled, isBlackoutEnabled} = blackoutState
+      const blackoutTimeDispatch = {
+        false: parseInt(timeToEnabled) * 1000,
+        true: parseInt(timeToDisabled) * 1000,
+      }
+      const blackoutTime = blackoutTimeDispatch[isBlackoutEnabled.toString()]
 
-  //       blackoutTimeout = setTimeout(() => {
-  //         setLoop({...loop, isActive: false})
-  //         setColor({transition: 1, current: 'black'})
-  //       }, blackoutTimeToEnabled)
-  //     }
+      blackoutTimeout = setTimeout(() => {
+        setBlackoutState({...blackoutState, isBlackoutEnabled: !isBlackoutEnabled})
+      }, blackoutTime)
+    }
 
-  //     if (!loop.isActive) {
-  //       const {timeToDisabled} = blackoutState
-  //       const blackoutTimeToDisabled = parseInt(timeToDisabled) * 1000
-
-  //       blackoutTimeout = setTimeout(() => {
-  //         setLoop({...loop, isActive: true})
-  //       }, blackoutTimeToDisabled)
-  //     }
-  //   }
-
-  //   return () => {
-  //     if (blackoutTimeout) clearTimeout(blackoutTimeout)
-  //   }
-  // }, [blackoutState, loop])
+    return () => {
+      if (blackoutTimeout) clearTimeout(blackoutTimeout)
+    }
+  }, [blackoutState])
 
   return [blackoutState, setBlackoutState]
 }

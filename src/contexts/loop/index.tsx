@@ -4,7 +4,7 @@ import {LoopContextProps} from './types'
 const DEFAULT_VALUE = {
   loopState: {
     isActive: true,
-    time: '24',
+    time: '12',
   },
   setLoopState: () => null,
 }

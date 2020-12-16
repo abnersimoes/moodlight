@@ -2,6 +2,7 @@ import {Dispatch, SetStateAction} from 'react'
 
 export interface BlackoutState {
   isActive: boolean
+  isBlackoutEnabled: boolean
   timeToEnabled: string
   timeToDisabled: string
 }
