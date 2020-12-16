@@ -3,6 +3,7 @@ import breakpoint from 'styled-components-breakpoint'
 
 interface ColorState {
   current: string
+  palette: string[]
   transition: number
 }
 

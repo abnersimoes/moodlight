@@ -2,11 +2,13 @@ import React, {createContext, useState} from 'react'
 import {ColorContextProps} from './types'
 import {colors} from './constants'
 
-const initialColor = colors[1][0]
+const [, initialPalette] = colors
+const [initialColor] = initialPalette
 
 const DEFAULT_VALUE = {
   colorState: {
     current: initialColor,
+    palette: initialPalette,
     transition: 1,
   },
   setColorState: () => null,

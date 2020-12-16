@@ -2,6 +2,7 @@ import {lighten, darken, saturate} from 'polished'
 
 export interface ColorState {
   current: string
+  palette: string[]
   transition: number
 }
 

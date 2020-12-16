@@ -9,7 +9,7 @@ import ButtonLoop from './ButtonLoop'
 
 export const fieldName = 'play-time'
 
-const FormGroupPlay = () => {
+const FormGroupLoop = () => {
   const [loopState, setLoopState] = useLoop()
   const [blackout, setBlackout] = useBlackout()
   const [color] = useColor()
@@ -41,4 +41,4 @@ const FormGroupPlay = () => {
   )
 }
 
-export default FormGroupPlay
+export default FormGroupLoop

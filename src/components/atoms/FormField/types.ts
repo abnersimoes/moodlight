@@ -2,6 +2,7 @@ import {ChangeEvent} from 'react'
 
 export interface ColorState {
   current: string
+  palette: string[]
   transition: number
 }
 
