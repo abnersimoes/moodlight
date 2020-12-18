@@ -5,6 +5,8 @@ const DEFAULT_VALUE = {
   loopState: {
     isActive: true,
     time: '12',
+    indexPalette: 0,
+    transition: 1,
   },
   setLoopState: () => null,
 }

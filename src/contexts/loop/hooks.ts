@@ -1,45 +1,38 @@
-import {useContext, useState, useEffect} from 'react'
-import {useColor} from '@contexts/color/hooks'
+import {useContext, useEffect, useState} from 'react'
 import {useBlackout} from '@contexts/blackout/hooks'
 import {LoopState, SetLoopState} from './types'
 import LoopContext from '.'
 
 export function useLoop(): [LoopState, SetLoopState] {
   const {loopState, setLoopState} = useContext(LoopContext)
-  const [color, setColor] = useColor()
   const [{isBlackoutEnabled}] = useBlackout()
-  const paletteLength = color.palette.length
-  const lastIndexOfPalette = paletteLength - 1
-  const [indexPalette, setIndexPalette] = useState<number>(0)
-  const [timeByPalette, setTimeByPalette] = useState<number>(color.transition)
+  const [nextIndexPalette, setNextIndexPalette] = useState(1)
+  const lastIndexOfPalette = 11
 
   useEffect(() => {
-    const {time} = loopState
-    const transition = parseInt(time) / paletteLength
-
-    if (transition !== timeByPalette) {
-      setTimeByPalette(transition)
-      setColor({...color, transition})
-    }
-  }, [loopState.time, color, timeByPalette])
+    setLoopState({...loopState, indexPalette: nextIndexPalette})
+  }, [])
 
   useEffect(() => {
-    const loopTime = timeByPalette * 1000
+    const {isActive, transition, indexPalette} = loopState
+    const loopTime = transition * 1000
     let loopTimeout: number
 
-    if (loopState.isActive && !isBlackoutEnabled) {
-      loopTimeout = setTimeout(() => {
-        const nextIndexPalette = indexPalette < lastIndexOfPalette ? indexPalette + 1 : 0
+    if (isActive && !isBlackoutEnabled) {
+      const nextIndex = indexPalette < lastIndexOfPalette ? indexPalette + 1 : 0
 
-        setIndexPalette(nextIndexPalette)
-        setColor({...color, current: color.palette[nextIndexPalette]})
-      }, loopTime)
+      if (nextIndex !== nextIndexPalette) {
+        loopTimeout = setTimeout(() => {
+          setLoopState({...loopState, indexPalette: nextIndex})
+          setNextIndexPalette(nextIndex)
+        }, loopTime)
+      }
     }
 
     return () => {
       if (loopTimeout) clearTimeout(loopTimeout)
     }
-  }, [loopState.isActive, isBlackoutEnabled, color, timeByPalette, indexPalette])
+  }, [loopState, nextIndexPalette, isBlackoutEnabled])
 
   return [loopState, setLoopState]
 }

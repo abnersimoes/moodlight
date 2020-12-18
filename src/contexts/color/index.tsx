@@ -9,7 +9,6 @@ const DEFAULT_VALUE = {
   colorState: {
     current: initialColor,
     palette: initialPalette,
-    transition: 1,
   },
   setColorState: () => null,
 }

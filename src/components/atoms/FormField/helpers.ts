@@ -5,7 +5,7 @@ interface BuilderProps extends FormFieldCommonProps {
   blur?: number
 }
 
-function builderInnerShadow({colorState: {current: color}, blur = 12}: BuilderProps) {
+function builderInnerShadow({color, blur = 12}: BuilderProps) {
   const distance = `${blur / 2}px`
   const saturated = saturate(0.075, color)
   const light = lighten(0.075, saturated)
@@ -14,10 +14,10 @@ function builderInnerShadow({colorState: {current: color}, blur = 12}: BuilderPr
   return `inset ${distance} ${distance} ${blur}px ${dark}, inset -${distance} -${distance} ${blur}px ${light}`
 }
 
-export function builderShadow({isDisabled, colorState, blur = 12}: BuilderProps) {
-  return isDisabled ? builderInnerShadow({colorState, blur: 4}) : builderInnerShadow({colorState, blur})
+export function builderShadow({isDisabled, color, blur = 12}: BuilderProps) {
+  return isDisabled ? builderInnerShadow({color, blur: 4}) : builderInnerShadow({color, blur})
 }
 
-export function builderBackground({isDisabled, colorState: {current: color}}: BuilderProps) {
+export function builderBackground({isDisabled, color}: BuilderProps) {
   return isDisabled ? darken(0.05, color) : color
 }

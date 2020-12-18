@@ -1,5 +1,6 @@
 import React, {ReactNode} from 'react'
 import {useColor} from '@contexts/color/hooks'
+import {useLoop} from '@contexts/loop/hooks'
 import * as Styled from './styled'
 
 interface TemplateMainProps {
@@ -7,9 +8,14 @@ interface TemplateMainProps {
 }
 
 function TemplateMain({children}: TemplateMainProps) {
-  const [color] = useColor()
+  const [{current: color}] = useColor()
+  const [{transition}] = useLoop()
 
-  return <Styled.TemplateMainWrapper colorState={color}>{children}</Styled.TemplateMainWrapper>
+  return (
+    <Styled.TemplateMainWrapper color={color} transition={transition}>
+      {children}
+    </Styled.TemplateMainWrapper>
+  )
 }
 
 export default TemplateMain

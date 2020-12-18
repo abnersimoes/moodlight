@@ -1,14 +1,9 @@
 import styled from 'styled-components'
 import breakpoint from 'styled-components-breakpoint'
 
-interface ColorState {
-  current: string
-  palette: string[]
-  transition: number
-}
-
 export interface TemplateMainWrapperProps {
-  colorState: ColorState
+  color: string
+  transition: number
 }
 
 export const TemplateMainWrapper = styled.main<TemplateMainWrapperProps>`
@@ -16,8 +11,8 @@ export const TemplateMainWrapper = styled.main<TemplateMainWrapperProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${({colorState: {current}}) => current};
-  transition: ${({colorState: {transition}}) => `all ${transition}s linear 0s`};
+  background-color: ${({color}) => color};
+  transition: ${({transition}) => `all ${transition}s linear 0s`};
 
   ${breakpoint('desktop')`
     justify-content: flex-end;

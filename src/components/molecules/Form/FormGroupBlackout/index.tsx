@@ -11,8 +11,8 @@ export const fieldName = 'blackout-time'
 
 const FormGroupBlackout = () => {
   const [blackoutState, setBlackoutState] = useBlackout()
-  const [{isActive: isActiveLoop}] = useLoop()
-  const [color] = useColor()
+  const [{isActive: isActiveLoop, transition}] = useLoop()
+  const [{current: color}] = useColor()
   const {isActive, timeToEnabled, timeToDisabled} = blackoutState
 
   const onToggleIsActive = useCallback(() => setBlackoutState({...blackoutState, isActive: !blackoutState.isActive}), [blackoutState])
@@ -34,13 +34,33 @@ const FormGroupBlackout = () => {
   return (
     <Styled.Grid>
       <Col>
-        <ButtonBlackout colorState={color} isActive={blackoutState.isActive} isDisabled={!isActiveLoop} onClick={onToggleIsActive} />
+        <ButtonBlackout
+          color={color}
+          transition={transition}
+          isActive={blackoutState.isActive}
+          isDisabled={!isActiveLoop}
+          onClick={onToggleIsActive}
+        />
       </Col>
       <Col flex={1}>
-        <FormField name={fieldName} colorState={color} value={timeToEnabled} isDisabled={!isActive} onChange={onSetTimeToEnabled} />
+        <FormField
+          name={fieldName}
+          color={color}
+          transition={transition}
+          value={timeToEnabled}
+          isDisabled={!isActive}
+          onChange={onSetTimeToEnabled}
+        />
       </Col>
       <Col flex={1}>
-        <FormField name={fieldName} colorState={color} value={timeToDisabled} isDisabled={!isActive} onChange={onSetTimeToDisabled} />
+        <FormField
+          name={fieldName}
+          color={color}
+          transition={transition}
+          value={timeToDisabled}
+          isDisabled={!isActive}
+          onChange={onSetTimeToDisabled}
+        />
       </Col>
     </Styled.Grid>
   )

@@ -1,13 +1,7 @@
 import {lighten, darken, saturate} from 'polished'
 
-export interface ColorState {
-  current: string
-  palette: string[]
-  transition: number
-}
-
 interface ButtonProps {
-  colorState: ColorState
+  color: string
   disabled?: boolean
   isActive?: boolean
 }
@@ -41,7 +35,7 @@ function builderFaceConcave() {
   `
 }
 
-export function builderDropShadow({colorState: {current: color}, blur = 12}: BuilderDropShadowProps) {
+export function builderDropShadow({color, blur = 12}: BuilderDropShadowProps) {
   const distance = `${blur / 2}px`
   const saturated = saturate(0.075, color)
   const light = lighten(0.075, saturated)
@@ -58,6 +52,6 @@ export function builderFaceEffect({isActive, disabled}: ButtonProps) {
   return isActive ? builderFaceConcave() : builderFaceConvex()
 }
 
-export function builderShadow({isActive, disabled, colorState, blur = 12}: BuilderDropShadowProps) {
-  return isActive || disabled ? builderDropShadow({colorState, blur: 2}) : builderDropShadow({colorState, blur})
+export function builderShadow({isActive, disabled, color, blur = 12}: BuilderDropShadowProps) {
+  return isActive || disabled ? builderDropShadow({color, blur: 2}) : builderDropShadow({color, blur})
 }

@@ -1,21 +1,18 @@
 import {ChangeEvent} from 'react'
 
-export interface ColorState {
-  current: string
-  palette: string[]
-  transition: number
-}
-
 export interface FormFieldCommonProps {
-  colorState: ColorState
+  color: string
   isDisabled?: boolean
   onChange?: (event: ChangeEvent<HTMLInputElement>) => unknown
 }
 
 export interface FormFieldProps extends FormFieldCommonProps {
   name: string
+  transition: number
   type?: string
   value?: string
 }
 
-export type FormFieldStyledProps = FormFieldCommonProps
+export interface FormFieldStyledProps extends FormFieldCommonProps {
+  transition: number
+}
