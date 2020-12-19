@@ -9,15 +9,21 @@ const NavFooter = () => {
   const [{current: color}] = useColor()
   const [{transition}] = useLoop()
   const [isFullscreenEnabled, setIsFullscreenEnabled] = useState(false)
-  const isFullscreenSupported = !!document.body.requestFullscreen
+  let isFullscreenSupported
+
+  if (typeof window !== 'undefined') {
+    isFullscreenSupported = !!document.body.requestFullscreen
+  }
 
   const onToggleIsFullscreenEnabled = useCallback(() => {
-    setIsFullscreenEnabled(!isFullscreenEnabled)
+    if (isFullscreenSupported) {
+      setIsFullscreenEnabled(!isFullscreenEnabled)
+      if (isFullscreenEnabled && document?.exitFullscreen) {
+        return document.exitFullscreen()
+      }
 
-    if (isFullscreenEnabled && document.exitFullscreen) {
-      return document.exitFullscreen()
+      return document.body.requestFullscreen()
     }
-    return document.body.requestFullscreen()
   }, [isFullscreenEnabled])
 
   return (

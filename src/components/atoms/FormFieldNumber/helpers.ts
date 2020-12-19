@@ -5,5 +5,7 @@ export function triggerOnChange(element: HTMLInputElement) {
 }
 
 export function getFieldElement(name: string) {
-  return document.querySelector(`#${prefixId}${name}`) as HTMLInputElement
+  if (document) {
+    return document.querySelector(`#${prefixId}${name}`) as HTMLInputElement
+  }
 }
