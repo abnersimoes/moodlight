@@ -4,7 +4,7 @@ import {LoopContextProps} from './types'
 const DEFAULT_VALUE = {
   loopState: {
     isActive: true,
-    time: '12',
+    time: '36',
     indexPalette: 0,
     transition: 1,
   },

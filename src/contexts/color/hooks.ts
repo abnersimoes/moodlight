@@ -26,9 +26,13 @@ export function useColor(): [ColorState, SetColorState] {
 
   useEffect(() => {
     if (isBlackoutEnabled) {
-      console.log({isBlackoutEnabled})
-      setColorState({...colorState, current: 'black'})
-    } else {
+      const [palette] = colors
+      setColorState({palette, current: 'black'})
+    }
+  }, [isBlackoutEnabled])
+
+  useEffect(() => {
+    if (!isBlackoutEnabled) {
       const nextColor = colorState.palette[loopState.indexPalette]
 
       if (colorState.current !== nextColor) {

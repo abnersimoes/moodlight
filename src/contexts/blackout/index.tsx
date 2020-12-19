@@ -5,7 +5,7 @@ const DEFAULT_VALUE = {
   blackoutState: {
     isActive: true,
     isBlackoutEnabled: false,
-    timeToEnabled: '3',
+    timeToEnabled: '2',
     timeToDisabled: '1',
   },
   setBlackoutState: () => null,

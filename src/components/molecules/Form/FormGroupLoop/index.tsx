@@ -16,9 +16,7 @@ const FormGroupLoop = () => {
   const {isActive, time} = loopState
 
   const onToggleIsActive = useCallback(() => {
-    if (loopState.isActive) {
-      setBlackout({...blackout, isActive: false})
-    }
+    setBlackout({...blackout, isActive: !loopState.isActive})
     setLoopState({...loopState, isActive: !loopState.isActive})
   }, [loopState, blackout])
 
