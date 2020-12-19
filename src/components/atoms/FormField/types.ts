@@ -11,6 +11,9 @@ export interface FormFieldProps extends FormFieldCommonProps {
   transition: number
   type?: string
   value?: string
+  min?: number
+  max?: number
+  step?: number
 }
 
 export interface FormFieldStyledProps extends FormFieldCommonProps {

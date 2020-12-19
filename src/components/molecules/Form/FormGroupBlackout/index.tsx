@@ -3,7 +3,7 @@ import {useColor} from '@contexts/color/hooks'
 import {useLoop} from '@contexts/loop/hooks'
 import {useBlackout} from '@contexts/blackout/hooks'
 import {Col} from '@components/atoms/Grid'
-import FormField from '@components/atoms/FormField'
+import FormFieldNumber from '@components/atoms/FormFieldNumber'
 import * as Styled from '../styled'
 import ButtonBlackout from './ButtonBlackout'
 
@@ -44,7 +44,9 @@ const FormGroupBlackout = () => {
         />
       </Col>
       <Col flex={1}>
-        <FormField
+        <FormFieldNumber
+          step={0.5}
+          min={0.5}
           name={fieldEnabledName}
           color={color}
           transition={transition}
@@ -54,7 +56,9 @@ const FormGroupBlackout = () => {
         />
       </Col>
       <Col flex={1}>
-        <FormField
+        <FormFieldNumber
+          step={0.5}
+          min={0.5}
           name={fieldDisabledName}
           color={color}
           transition={transition}

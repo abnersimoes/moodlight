@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
 export const NavWrapper = styled.nav`
-  width: 15.5rem;
+  width: 18rem;
   margin: 1rem;
   padding: 1rem;
-  // background-color: rgba(0, 0, 0, 0.2);
 `

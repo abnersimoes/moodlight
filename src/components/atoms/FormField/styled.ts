@@ -10,7 +10,6 @@ export const FormInput = styled.input<FormFieldStyledProps>`
   border-radius: 0.5rem;
   border: none;
   outline: none;
-  padding: 0 1rem;
   color: ${({isDisabled}) => (isDisabled ? 'rgba(255, 255, 255, 0.25)' : 'white')};
   background: ${Helpers.builderBackground};
   box-shadow: ${Helpers.builderShadow};

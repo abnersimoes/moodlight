@@ -4,10 +4,11 @@ import * as Styled from './styled'
 interface ButtonNumberControlProps {
   children: ReactNode
   onClick: () => void
+  isDisabled?: boolean
 }
 
-function ButtonNumberControl({...props}: ButtonNumberControlProps) {
-  return <Styled.ButtonNumberControl type="button" {...props} />
+function ButtonNumberControl({isDisabled, ...props}: ButtonNumberControlProps) {
+  return <Styled.ButtonNumberControl disabled={isDisabled} type="button" {...props} />
 }
 
 export default ButtonNumberControl

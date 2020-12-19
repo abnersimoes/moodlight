@@ -10,4 +10,9 @@ export const ButtonNumberControl = styled.button`
   font-size: 1.2rem;
   color: white;
   cursor: pointer;
+
+  :disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
 `

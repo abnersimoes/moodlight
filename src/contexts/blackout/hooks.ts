@@ -5,8 +5,8 @@ import BlackoutContext from '.'
 function builderBlackoutTime(blackoutState: BlackoutState) {
   const {timeToEnabled, timeToDisabled, isBlackoutEnabled} = blackoutState
   const blackoutTimeDispatch = {
-    false: parseInt(timeToEnabled) * 1000,
-    true: parseInt(timeToDisabled) * 1000,
+    false: parseFloat(timeToEnabled.split(',').join('.')) * 1000,
+    true: parseFloat(timeToDisabled.split(',').join('.')) * 1000,
   }
 
   return blackoutTimeDispatch[isBlackoutEnabled.toString()]
