@@ -6,7 +6,7 @@ import SEO from '@components/atoms/Seo'
 function IndexPage() {
   return (
     <TemplateMain>
-      <SEO title="home" />
+      <SEO title="MOODLIGHT" />
       <Nav />
     </TemplateMain>
   )
