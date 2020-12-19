@@ -7,7 +7,8 @@ import FormField from '@components/atoms/FormField'
 import * as Styled from '../styled'
 import ButtonBlackout from './ButtonBlackout'
 
-export const fieldName = 'blackout-time'
+export const fieldEnabledName = 'blackout-enabled-time'
+export const fieldDisabledName = 'blackout-disabled-time'
 
 const FormGroupBlackout = () => {
   const [blackoutState, setBlackoutState] = useBlackout()
@@ -44,7 +45,7 @@ const FormGroupBlackout = () => {
       </Col>
       <Col flex={1}>
         <FormField
-          name={fieldName}
+          name={fieldEnabledName}
           color={color}
           transition={transition}
           value={timeToEnabled}
@@ -54,7 +55,7 @@ const FormGroupBlackout = () => {
       </Col>
       <Col flex={1}>
         <FormField
-          name={fieldName}
+          name={fieldDisabledName}
           color={color}
           transition={transition}
           value={timeToDisabled}

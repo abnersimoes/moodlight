@@ -3,7 +3,7 @@ import {useLoop} from '@contexts/loop/hooks'
 import {useBlackout} from '@contexts/blackout/hooks'
 import {useColor} from '@contexts/color/hooks'
 import {Col} from '@components/atoms/Grid'
-import FormField from '@components/atoms/FormField'
+import FormFieldNumber from '@components/atoms/FormFieldNumber'
 import * as Styled from '../styled'
 import ButtonLoop from './ButtonLoop'
 
@@ -33,7 +33,7 @@ const FormGroupLoop = () => {
         <ButtonLoop color={color} transition={loopState.transition} isActive={isActive} onClick={onToggleIsActive} />
       </Col>
       <Col flex={1}>
-        <FormField
+        <FormFieldNumber
           name={fieldName}
           color={color}
           transition={loopState.transition}
