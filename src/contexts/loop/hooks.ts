@@ -1,11 +1,9 @@
 import {useContext, useEffect, useState} from 'react'
-import {useBlackout} from '@contexts/blackout/hooks'
 import {LoopState, SetLoopState} from './types'
 import LoopContext from '.'
 
 export function useLoop(): [LoopState, SetLoopState] {
   const {loopState, setLoopState} = useContext(LoopContext)
-  const [{isBlackoutEnabled}] = useBlackout()
   const [nextIndexPalette, setNextIndexPalette] = useState(1)
   const lastIndexOfPalette = 11
 
@@ -18,7 +16,7 @@ export function useLoop(): [LoopState, SetLoopState] {
     const loopTime = transition * 1000
     let loopTimeout: number
 
-    if (isActive && !isBlackoutEnabled) {
+    if (isActive) {
       const nextIndex = indexPalette < lastIndexOfPalette ? indexPalette + 1 : 0
 
       if (nextIndex !== nextIndexPalette) {
@@ -32,7 +30,7 @@ export function useLoop(): [LoopState, SetLoopState] {
     return () => {
       if (loopTimeout) clearTimeout(loopTimeout)
     }
-  }, [loopState, nextIndexPalette, isBlackoutEnabled])
+  }, [loopState, nextIndexPalette])
 
   return [loopState, setLoopState]
 }
