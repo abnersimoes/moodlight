@@ -3,7 +3,7 @@ import {BlackoutContextProps} from './types'
 
 const DEFAULT_VALUE = {
   blackoutState: {
-    isActive: true,
+    isActive: false,
     isBlackoutEnabled: false,
     timeToEnabled: '2',
     timeToDisabled: '1',
