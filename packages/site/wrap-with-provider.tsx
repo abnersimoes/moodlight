@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react'
-import GlobalContext from './src/contexts'
+import GlobalContext from '../contexts/src'
 import GlobalStyle from './src/global-styles'
 
 interface WrapWithProviderProps {

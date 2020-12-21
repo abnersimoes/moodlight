@@ -35,6 +35,8 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+packages/contexts/node_modules/
+packages/site/node_modules/
 
 # Typescript v1 declaration files
 # typings/
@@ -55,8 +57,8 @@ jspm_packages/
 .env*
 
 # gatsby files
-.cache/
-public
+packages/site/.cache
+packages/site/public
 
 # Mac files
 .DS_Store

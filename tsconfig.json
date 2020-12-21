@@ -1,25 +1,8 @@
 {
   "compilerOptions": {
-    // "module": "commonjs",
-    // "target": "esnext",
     "jsx": "preserve",
-    // "lib": ["dom", "esnext"],
-    // "strict": true,
-    // "noEmit": true,
-    // "isolatedModules": true,
-    // "resolveJsonModule": true,
     "esModuleInterop": true,
-    // "noUnusedLocals": false,
-    // "allowJs": true,
     "baseUrl": ".",
-    "paths": {
-      "@static": ["static"],
-      "@static/*": ["static/*"],
-      "@contexts": ["src/contexts"],
-      "@contexts/*": ["src/contexts/*"],
-      "@components": ["src/components"],
-      "@components/*": ["src/components/*"],
-    },
   },
   "exclude": ["node_modules", "public", ".cache"]
 }

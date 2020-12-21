@@ -11,8 +11,8 @@ module.exports = {
       resolve: 'gatsby-plugin-alias-imports',
       options: {
         alias: {
+          '@contexts': '../contexts/src',
           '@static': './static',
-          '@contexts': './src/contexts',
           '@components': './src/components',
         },
         extensions: [],
