@@ -1,4 +1,5 @@
 import {useContext, useEffect} from 'react'
+import {useLoop} from '../loop/hooks'
 import {BlackoutState, SetBlackoutState} from './types'
 import BlackoutContext from '.'
 
@@ -14,6 +15,7 @@ function builderBlackoutTime(blackoutState: BlackoutState) {
 
 export function useBlackout(): [BlackoutState, SetBlackoutState] {
   const {blackoutState, setBlackoutState} = useContext(BlackoutContext)
+  const [loop] = useLoop()
 
   useEffect(() => {
     let blackoutTimeout: number
@@ -31,6 +33,12 @@ export function useBlackout(): [BlackoutState, SetBlackoutState] {
       if (blackoutTimeout) clearTimeout(blackoutTimeout)
     }
   }, [blackoutState])
+
+  useEffect(() => {
+    if (!loop.isActive && blackoutState.isActive) {
+      setBlackoutState({...blackoutState, isActive: false})
+    }
+  }, [loop.isActive, blackoutState])
 
   return [blackoutState, setBlackoutState]
 }

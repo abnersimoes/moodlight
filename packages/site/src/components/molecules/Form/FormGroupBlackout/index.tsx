@@ -16,8 +16,7 @@ const FormGroupBlackout = () => {
   const [{isActive: isActiveLoop, transition}] = useLoop()
   const [{current: color, contrastColor}] = useColor()
   const {isActive, timeToEnabled, timeToDisabled} = blackoutState
-  const [step] = useState(1)
-  const [minValue] = useState(0.2)
+  const [minValue] = useState(0.25)
 
   const onToggleIsActive = useCallback(() => setBlackoutState({...blackoutState, isActive: !blackoutState.isActive}), [blackoutState])
 
@@ -51,7 +50,6 @@ const FormGroupBlackout = () => {
       </Col>
       <Col flex={1}>
         <FormFieldNumber
-          step={step}
           min={minValue}
           name={fieldEnabledName}
           color={color}
@@ -64,7 +62,6 @@ const FormGroupBlackout = () => {
       </Col>
       <Col flex={1}>
         <FormFieldNumber
-          step={step}
           min={minValue}
           name={fieldDisabledName}
           color={color}
