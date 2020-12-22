@@ -5,7 +5,7 @@ import {FormFieldProps} from './types'
 export const prefixId = 'field-'
 
 function FormField({value, name, type = 'text', ...props}: FormFieldProps) {
-  return <Styled.FormInput type={type} defaultValue={value} name={name} id={`${prefixId}${name}`} {...props} />
+  return <Styled.FormInput type={type} value={value} name={name} id={`${prefixId}${name}`} {...props} />
 }
 
 export default FormField

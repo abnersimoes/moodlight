@@ -9,6 +9,7 @@ export interface FormFieldCommonProps {
 export interface FormFieldProps extends FormFieldCommonProps {
   name: string
   transition: number
+  contrastColor: string
   type?: string
   value?: string
   min?: number

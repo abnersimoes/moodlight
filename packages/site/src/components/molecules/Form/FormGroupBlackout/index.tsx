@@ -1,10 +1,11 @@
-import React, {useCallback} from 'react'
+import React, {useState, useCallback} from 'react'
 import {useColor} from '@contexts/color/hooks'
 import {useLoop} from '@contexts/loop/hooks'
 import {useBlackout} from '@contexts/blackout/hooks'
 import {Col} from '@components/atoms/Grid'
 import FormFieldNumber from '@components/atoms/FormFieldNumber'
 import * as Styled from '../styled'
+import * as Helpers from '../helpers'
 import ButtonBlackout from './ButtonBlackout'
 
 export const fieldEnabledName = 'blackout-enabled-time'
@@ -15,18 +16,22 @@ const FormGroupBlackout = () => {
   const [{isActive: isActiveLoop, transition}] = useLoop()
   const [{current: color, contrastColor}] = useColor()
   const {isActive, timeToEnabled, timeToDisabled} = blackoutState
+  const [step] = useState(1)
+  const [minValue] = useState(0.2)
 
   const onToggleIsActive = useCallback(() => setBlackoutState({...blackoutState, isActive: !blackoutState.isActive}), [blackoutState])
 
   const onSetTimeToEnabled = useCallback(
-    ({target: {value: timeToEnabled}}) => {
+    props => {
+      const timeToEnabled = Helpers.getFieldValueOrMin({min: minValue, ...props})
       setBlackoutState({...blackoutState, timeToEnabled})
     },
     [blackoutState]
   )
 
   const onSetTimeToDisabled = useCallback(
-    ({target: {value: timeToDisabled}}) => {
+    props => {
+      const timeToDisabled = Helpers.getFieldValueOrMin({min: minValue, ...props})
       setBlackoutState({...blackoutState, timeToDisabled})
     },
     [blackoutState]
@@ -46,8 +51,8 @@ const FormGroupBlackout = () => {
       </Col>
       <Col flex={1}>
         <FormFieldNumber
-          step={0.5}
-          min={0.5}
+          step={step}
+          min={minValue}
           name={fieldEnabledName}
           color={color}
           contrastColor={contrastColor}
@@ -59,8 +64,8 @@ const FormGroupBlackout = () => {
       </Col>
       <Col flex={1}>
         <FormFieldNumber
-          step={0.5}
-          min={0.5}
+          step={step}
+          min={minValue}
           name={fieldDisabledName}
           color={color}
           contrastColor={contrastColor}

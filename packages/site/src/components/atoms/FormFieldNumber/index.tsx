@@ -26,10 +26,14 @@ function FormFieldNumber({name, value, contrastColor, transition, min = 1, max =
     <Grid counterFlowAlign="center">
       <FormField type="number" name={name} min={min} value={value} contrastColor={contrastColor} transition={transition} {...props} />
       <Col>
-        <ButtonNumberControl contrastColor={contrastColor} transition={transition} isDisabled={parseInt(value) === max} onClick={onSetUp}>
+        <ButtonNumberControl contrastColor={contrastColor} transition={transition} isDisabled={parseFloat(value) === max} onClick={onSetUp}>
           <ArrowUpIcon />
         </ButtonNumberControl>
-        <ButtonNumberControl contrastColor={contrastColor} transition={transition} isDisabled={parseInt(value) === min} onClick={onSetDown}>
+        <ButtonNumberControl
+          contrastColor={contrastColor}
+          transition={transition}
+          isDisabled={parseFloat(value) === min}
+          onClick={onSetDown}>
           <ArrowDownIcon />
         </ButtonNumberControl>
       </Col>
