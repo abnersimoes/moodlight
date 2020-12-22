@@ -10,10 +10,10 @@ export const FormInput = styled.input<FormFieldStyledProps>`
   border-radius: 0.5rem;
   border: none;
   outline: none;
-  color: ${({isDisabled}) => (isDisabled ? 'rgba(255, 255, 255, 0.25)' : 'white')};
+  color: ${({contrastColor}) => contrastColor};
   background: ${Helpers.builderBackground};
   box-shadow: ${Helpers.builderShadow};
-  transition: ${({transition}) => `all ${transition}s linear 0s`};
+  transition: ${({transition}) => `all ${transition}s ease-in-out 0s`};
 
   ::placeholder,
   ::-webkit-input-placeholder {

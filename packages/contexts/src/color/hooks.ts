@@ -1,9 +1,9 @@
 import {useContext, useEffect, useState} from 'react'
-import {useSaturate} from '@contexts/saturate/hooks'
-import {useBlackout} from '@contexts/blackout/hooks'
-import {useLoop} from '@contexts/loop/hooks'
+import {useSaturate} from '../saturate/hooks'
+import {useBlackout} from '../blackout/hooks'
+import {useLoop} from '../loop/hooks'
 import {ColorState, SetColorState} from './types'
-import {colors} from './constants'
+import {colors, colorsContrastWithBlack} from './constants'
 import ColorContext from '.'
 
 export function useColor(): [ColorState, SetColorState] {
@@ -11,6 +11,8 @@ export function useColor(): [ColorState, SetColorState] {
   const [loopState, setLoopState] = useLoop()
   const [{isBlackoutEnabled}] = useBlackout()
   const [{lvl: saturateLvl}] = useSaturate()
+  const [alphaWhite] = useState('rgba(255, 255, 255 ,0.35)')
+  const [alphaBlack] = useState('rgba(0, 0, 0, 0.3)')
 
   const [timeByPalette, setTimeByPalette] = useState<number>(loopState.transition)
   const paletteLength = 12
@@ -27,16 +29,18 @@ export function useColor(): [ColorState, SetColorState] {
   useEffect(() => {
     if (isBlackoutEnabled) {
       const [palette] = colors
-      setColorState({palette, current: 'black'})
+      setColorState({palette, current: 'black', contrastColor: alphaWhite})
     }
   }, [isBlackoutEnabled])
 
   useEffect(() => {
     if (!isBlackoutEnabled) {
       const nextColor = colorState.palette[loopState.indexPalette]
+      const [colorContrastWithBlack] = colorsContrastWithBlack.filter(color => color === nextColor)
+      const contrastColor = colorContrastWithBlack ? alphaBlack : alphaWhite
 
       if (colorState.current !== nextColor) {
-        setColorState({...colorState, current: nextColor})
+        setColorState({...colorState, current: nextColor, contrastColor})
       }
     }
   }, [colorState, loopState.indexPalette, isBlackoutEnabled])

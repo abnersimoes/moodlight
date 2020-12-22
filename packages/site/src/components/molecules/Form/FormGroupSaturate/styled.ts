@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 
 interface IconIndicatorProps {
+  contrastColor: string
+  transition: number
   isFilled?: boolean
 }
 
-export const IconWrappe = styled.div`
+export const IconWrapper = styled.div`
   width: 2rem;
   height: 1.5rem;
   display: flex;
@@ -15,10 +17,10 @@ export const IconWrappe = styled.div`
 
 export const IconIndicator = styled.div<IconIndicatorProps>`
   width: 0.25rem;
-  background-color: white;
+  background-color: ${({contrastColor}) => contrastColor};
   border-radius: 1rem;
   opacity: ${({isFilled}) => (isFilled ? '1' : '0.25')};
-  transition: 0.2s opacity ease-in-out 0s;
+  transition: ${({transition}) => `all ${transition}s ease-in-out 0s`};
 
   :nth-child(1) {
     height: 40%;

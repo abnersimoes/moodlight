@@ -10,7 +10,7 @@ export const NavWrapper = styled.nav<NavWrapperProps>`
   padding: 1rem;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.2s ease-out 0s;
+  transition: all 0.2s ease-in-out 0s;
 
   ${({isActive}) =>
     isActive &&

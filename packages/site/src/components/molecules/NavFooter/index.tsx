@@ -6,7 +6,7 @@ import LinkRepo from '../LinkRepo'
 import {useLoop} from '@contexts/loop/hooks'
 
 const NavFooter = () => {
-  const [{current: color}] = useColor()
+  const [{current: color, contrastColor}] = useColor()
   const [{transition}] = useLoop()
   const [isFullscreenEnabled, setIsFullscreenEnabled] = useState(false)
   let isFullscreenSupported
@@ -30,11 +30,17 @@ const NavFooter = () => {
     <Grid>
       {isFullscreenSupported && (
         <Col>
-          <ButtonFullscreen color={color} transition={transition} isActive={isFullscreenEnabled} onClick={onToggleIsFullscreenEnabled} />
+          <ButtonFullscreen
+            color={color}
+            contrastColor={contrastColor}
+            transition={transition}
+            isActive={isFullscreenEnabled}
+            onClick={onToggleIsFullscreenEnabled}
+          />
         </Col>
       )}
       <Col flex={1} alignSelf="flex-end">
-        <LinkRepo />
+        <LinkRepo contrastColor={contrastColor} transition={transition} />
       </Col>
     </Grid>
   )

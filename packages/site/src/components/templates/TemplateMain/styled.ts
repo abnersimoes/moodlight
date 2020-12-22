@@ -12,7 +12,7 @@ export const TemplateMainWrapper = styled.main<TemplateMainWrapperProps>`
   justify-content: center;
   align-items: center;
   background-color: ${({color}) => color};
-  transition: ${({transition}) => `all ${transition}s linear 0s`};
+  transition: ${({transition}) => `all ${transition}s ease-in-out 0s`};
 
   ${breakpoint('desktop')`
     justify-content: flex-end;

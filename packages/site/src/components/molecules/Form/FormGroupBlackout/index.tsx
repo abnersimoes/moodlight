@@ -13,7 +13,7 @@ export const fieldDisabledName = 'blackout-disabled-time'
 const FormGroupBlackout = () => {
   const [blackoutState, setBlackoutState] = useBlackout()
   const [{isActive: isActiveLoop, transition}] = useLoop()
-  const [{current: color}] = useColor()
+  const [{current: color, contrastColor}] = useColor()
   const {isActive, timeToEnabled, timeToDisabled} = blackoutState
 
   const onToggleIsActive = useCallback(() => setBlackoutState({...blackoutState, isActive: !blackoutState.isActive}), [blackoutState])
@@ -37,6 +37,7 @@ const FormGroupBlackout = () => {
       <Col>
         <ButtonBlackout
           color={color}
+          contrastColor={contrastColor}
           transition={transition}
           isActive={blackoutState.isActive}
           isDisabled={!isActiveLoop}
@@ -49,6 +50,7 @@ const FormGroupBlackout = () => {
           min={0.5}
           name={fieldEnabledName}
           color={color}
+          contrastColor={contrastColor}
           transition={transition}
           value={timeToEnabled}
           isDisabled={!isActive}
@@ -61,6 +63,7 @@ const FormGroupBlackout = () => {
           min={0.5}
           name={fieldDisabledName}
           color={color}
+          contrastColor={contrastColor}
           transition={transition}
           value={timeToDisabled}
           isDisabled={!isActive}

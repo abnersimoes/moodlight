@@ -7,7 +7,7 @@ import Grid, {Col} from '../Grid'
 import ButtonNumberControl from './ButtonNumberControl'
 import * as Helpers from './helpers'
 
-function FormFieldNumber({name, value, min = 1, max = 120, ...props}: FormFieldProps) {
+function FormFieldNumber({name, value, contrastColor, transition, min = 1, max = 120, ...props}: FormFieldProps) {
   const onSetDown = useCallback(() => {
     const field = Helpers.getFieldElement(name)
 
@@ -24,12 +24,12 @@ function FormFieldNumber({name, value, min = 1, max = 120, ...props}: FormFieldP
 
   return (
     <Grid counterFlowAlign="center">
-      <FormField type="number" name={name} min={min} value={value} {...props} />
+      <FormField type="number" name={name} min={min} value={value} contrastColor={contrastColor} transition={transition} {...props} />
       <Col>
-        <ButtonNumberControl isDisabled={parseInt(value) === max} onClick={onSetUp}>
+        <ButtonNumberControl contrastColor={contrastColor} transition={transition} isDisabled={parseInt(value) === max} onClick={onSetUp}>
           <ArrowUpIcon />
         </ButtonNumberControl>
-        <ButtonNumberControl isDisabled={parseInt(value) === min} onClick={onSetDown}>
+        <ButtonNumberControl contrastColor={contrastColor} transition={transition} isDisabled={parseInt(value) === min} onClick={onSetDown}>
           <ArrowDownIcon />
         </ButtonNumberControl>
       </Col>

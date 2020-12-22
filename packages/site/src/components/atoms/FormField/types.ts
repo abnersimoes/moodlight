@@ -18,4 +18,5 @@ export interface FormFieldProps extends FormFieldCommonProps {
 
 export interface FormFieldStyledProps extends FormFieldCommonProps {
   transition: number
+  contrastColor: string
 }

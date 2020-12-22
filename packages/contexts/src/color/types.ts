@@ -1,6 +1,8 @@
 import {Dispatch, SetStateAction} from 'react'
+
 export interface ColorState {
   current: string
+  contrastColor: string
   palette: string[]
 }
 

@@ -8,6 +8,7 @@ const [initialColor] = initialPalette
 const DEFAULT_VALUE = {
   colorState: {
     current: initialColor,
+    contrastColor: 'rgba(255, 255, 255 ,0.35)',
     palette: initialPalette,
   },
   setColorState: () => null,

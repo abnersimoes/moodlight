@@ -4,9 +4,11 @@ import * as Styled from './styled'
 interface HighlightSaturateBar {
   lvl: number
   max: number
+  transition: number
+  contrastColor: string
 }
 
-function HighlightSaturateBar({lvl, max}) {
+function HighlightSaturateBar({lvl, max, transition, contrastColor}) {
   const [list, setList] = useState([])
 
   useEffect(() => {
@@ -20,11 +22,11 @@ function HighlightSaturateBar({lvl, max}) {
   }, [lvl])
 
   return (
-    <Styled.IconWrappe>
+    <Styled.IconWrapper>
       {list.map((value, index) => (
-        <Styled.IconIndicator isFilled={index < value} key={index} />
+        <Styled.IconIndicator transition={transition} contrastColor={contrastColor} isFilled={index < value} key={index} />
       ))}
-    </Styled.IconWrappe>
+    </Styled.IconWrapper>
   )
 }
 

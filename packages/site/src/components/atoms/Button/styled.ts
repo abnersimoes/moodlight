@@ -3,6 +3,7 @@ import * as Helpers from './helpers'
 
 export interface ButtonProps {
   color: string
+  contrastColor: string
   transition: number
   type?: 'button' | 'submit' | 'reset'
   isActive?: boolean
@@ -18,12 +19,15 @@ export const Button = styled.button<ButtonProps>`
   cursor: pointer;
   box-shadow: ${Helpers.builderShadow};
   background-color: ${({color}) => color};
-  transition: ${({transition}) => `all ${transition}s linear 0s`};
+  transition: ${({transition}) => `all ${transition}s ease-in-out 0s`};
   position: relative;
 
   * {
     position: relative;
     z-index: 1;
+    transition: ${({transition}) => `all ${transition / 3}s ease-in-out 0s`};
+    color: ${({contrastColor}) => contrastColor};
+    fill: ${({contrastColor}) => contrastColor};
   }
 
   :before,

@@ -3,6 +3,33 @@
     "jsx": "preserve",
     "esModuleInterop": true,
     "baseUrl": ".",
+    "moduleResolution": "node",
+    "paths": {
+      "@contexts": ["packages/contexts/src"],
+      "@contexts/*": ["packages/contexts/src/*"],
+      "@static": ["packages/site/static"],
+      "@static/*": ["packages/site/static/*"],
+      "@components": ["packages/site/src/components"],
+      "@components/*": ["packages/site/src/components/*"],
+    },
+    "typeRoots": [
+      "typings",
+      "node_modules/@types",
+      "*/**/node_modules/@types",
+    ]
   },
-  "exclude": ["node_modules", "public", ".cache"]
+  "include": [
+    "typings",
+    "node_modules/@types",
+    "*/**/node_modules/@types",
+    "packages/**/src/**/*",
+  ],
+  "exclude": [
+    "node_modules",
+    "packages/site/public",
+    "packages/site/.cache",
+    "packages/site/__generated__",
+    "*/**/node-modules",
+    "*/**/src/**/__test__/**/*"
+  ]
 }

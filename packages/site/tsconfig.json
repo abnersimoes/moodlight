@@ -3,37 +3,6 @@
   "compilerOptions": {
     "module": "esnext",
     "outDir": "dist",
-    "rootDir": "src",
     "declaration": true,
-    "types": ["node"],
-    "baseUrl": "./",
-    "paths": {
-      "@contexts": ["../contexts/src"],
-      "@contexts/*": ["../contexts/src/*"],
-      "@static": ["static"],
-      "@static/*": ["static/*"],
-      "@components": ["src/components"],
-      "@components/*": ["src/components/*"],
-    },
-    "typeRoots": [
-      "../../node_modules/@types",
-      "../../typings",
-      "node_modules/@types",
-    ]
   },
-  "include": [
-    "../../typings",
-    "../../node_modules/@types",
-    "node_modules/@types",
-    "src/**/*",
-  ],
-  "exclude": [
-    "../../node-modules/**",
-    "../app/**",
-    "../contexts/**",
-    "cache/**",
-    "public/**",
-    "node_modules/**",
-    "src/**/__test__/**/*",
-  ]
 }

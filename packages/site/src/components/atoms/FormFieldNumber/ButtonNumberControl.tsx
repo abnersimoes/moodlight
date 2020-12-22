@@ -1,7 +1,7 @@
 import React, {ReactNode} from 'react'
 import * as Styled from './styled'
 
-interface ButtonNumberControlProps {
+interface ButtonNumberControlProps extends Styled.ButtonNumberControlProps {
   children: ReactNode
   onClick: () => void
   isDisabled?: boolean
