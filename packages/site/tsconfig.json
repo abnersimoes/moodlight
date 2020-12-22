@@ -29,8 +29,10 @@
   ],
   "exclude": [
     "../../node-modules/**",
-    "../../public/**",
-    "../../.cache/**",
+    "../app/**",
+    "../contexts/**",
+    "cache/**",
+    "public/**",
     "node_modules/**",
     "src/**/__test__/**/*",
   ]

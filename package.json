@@ -9,7 +9,9 @@
     "site:build": "yarn workspace site gatsby build",
     "site:develop": "yarn workspace site gatsby develop",
     "site:start": "yarn workspace site npm run develop",
-    "site:serve": "yarn workspace site gatsby serve"
+    "site:serve": "yarn workspace site gatsby serve",
+    "app:ios": "yarn workspace app ios",
+    "clean": "rm -rf node_modules packages/app/node_modules packages/site/node_modules"
   },
   "workspaces": {
     "packages": [
@@ -18,8 +20,8 @@
     "nohoist": []
   },
   "dependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
@@ -32,6 +34,7 @@
     "babel-loader": "^8.2.2",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "prettier": "2.1.2",

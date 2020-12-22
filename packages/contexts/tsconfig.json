@@ -20,8 +20,8 @@
   ],
   "exclude": [
     "../../node-modules/**",
-    "../../public/**",
-    "../../.cache/**",
+    "../app/**",
+    "../site/**",
     "node_modules/**",
     "src/**/__test__/**/*",
   ]
