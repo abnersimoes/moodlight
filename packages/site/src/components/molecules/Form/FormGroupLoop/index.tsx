@@ -1,4 +1,5 @@
-import React, {useCallback, useState} from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
+import {LOOP_IS_ACTIVE, LOOP_TIME} from '@contexts/constants/storage'
 import {useLoop} from '@contexts/loop/hooks'
 import {useColor} from '@contexts/color/hooks'
 import {Col} from '@components/atoms/Grid'
@@ -14,6 +15,11 @@ const FormGroupLoop = () => {
   const [{current: color, contrastColor}] = useColor()
   const {isActive, time} = loopState
   const [minValue] = useState(3)
+
+  useEffect(() => {
+    localStorage.setItem(LOOP_IS_ACTIVE, `${loopState.isActive}`)
+    localStorage.setItem(LOOP_TIME, loopState.time)
+  }, [loopState.isActive, loopState.time])
 
   const onToggleIsActive = useCallback(() => setLoopState({...loopState, isActive: !loopState.isActive}), [loopState])
 

@@ -1,4 +1,5 @@
 import React, {createContext, useState} from 'react'
+import {LOOP_IS_ACTIVE, LOOP_TIME} from '../constants/storage'
 import {LoopContextProps} from './types'
 
 const DEFAULT_VALUE = {
@@ -14,7 +15,11 @@ const DEFAULT_VALUE = {
 const LoopContext = createContext<LoopContextProps>(DEFAULT_VALUE)
 
 function LoopContextProvider({children}) {
-  const [loopState, setLoopState] = useState(DEFAULT_VALUE.loopState)
+  const loopIsActive = JSON.parse(localStorage.getItem(LOOP_IS_ACTIVE))
+  const isActive = loopIsActive !== null ? loopIsActive : DEFAULT_VALUE.loopState.isActive
+  const time = localStorage.getItem(LOOP_TIME) || DEFAULT_VALUE.loopState.time
+
+  const [loopState, setLoopState] = useState({...DEFAULT_VALUE.loopState, isActive, time})
 
   return (
     <LoopContext.Provider

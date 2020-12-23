@@ -1,4 +1,5 @@
 import React, {useCallback, useMemo, useState} from 'react'
+import {SATURATE_LVL} from '@contexts/constants/storage'
 import {useColor} from '@contexts/color/hooks'
 import {useSaturate} from '@contexts/saturate/hooks'
 import {useLoop} from '@contexts/loop/hooks'
@@ -17,6 +18,8 @@ const FormGroupSaturate = () => {
 
   useMemo(() => {
     const {lvl, min, max} = saturateState
+
+    localStorage.setItem(SATURATE_LVL, `${lvl}`)
 
     setIsMinLvl(lvl <= min)
     setIsMaxLvl(lvl >= max)

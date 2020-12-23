@@ -1,4 +1,5 @@
 import React, {createContext, useState} from 'react'
+import {SATURATE_LVL} from '../constants/storage'
 import {SaturateContextProps, SaturateState} from './types'
 
 const DEFAULT_VALUE = {
@@ -13,7 +14,9 @@ const DEFAULT_VALUE = {
 const SaturateContext = createContext<SaturateContextProps>(DEFAULT_VALUE)
 
 function SaturateContextProvider({children}) {
-  const [saturateState, setSaturateState] = useState(DEFAULT_VALUE.saturateState)
+  const saturateLvl = localStorage.getItem(SATURATE_LVL)
+  const lvl = saturateLvl ? parseInt(saturateLvl) : DEFAULT_VALUE.saturateState.lvl
+  const [saturateState, setSaturateState] = useState({...DEFAULT_VALUE.saturateState, lvl})
 
   return (
     <SaturateContext.Provider

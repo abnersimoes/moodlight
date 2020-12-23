@@ -7,10 +7,10 @@
     "paths": {
       "@contexts": ["packages/contexts/src"],
       "@contexts/*": ["packages/contexts/src/*"],
-      "@static": ["packages/site/static"],
-      "@static/*": ["packages/site/static/*"],
       "@components": ["packages/site/src/components"],
       "@components/*": ["packages/site/src/components/*"],
+      "@static": ["packages/site/static"],
+      "@static/*": ["packages/site/static/*"],
     },
     "typeRoots": [
       "typings",

@@ -1,4 +1,5 @@
-import React, {useState, useCallback} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
+import {BLACKOUT_IS_ACTIVE, BLACKOUT_TIME_TO_ENABLED, BLACKOUT_TIME_TO_DISABLED} from '@contexts/constants/storage'
 import {useColor} from '@contexts/color/hooks'
 import {useLoop} from '@contexts/loop/hooks'
 import {useBlackout} from '@contexts/blackout/hooks'
@@ -17,6 +18,12 @@ const FormGroupBlackout = () => {
   const [{current: color, contrastColor}] = useColor()
   const {isActive, timeToEnabled, timeToDisabled} = blackoutState
   const [minValue] = useState(0.25)
+
+  useEffect(() => {
+    localStorage.setItem(BLACKOUT_IS_ACTIVE, `${blackoutState.isActive}`)
+    localStorage.setItem(BLACKOUT_TIME_TO_ENABLED, blackoutState.timeToEnabled)
+    localStorage.setItem(BLACKOUT_TIME_TO_DISABLED, blackoutState.timeToDisabled)
+  }, [blackoutState.isActive, blackoutState.timeToEnabled, blackoutState.timeToDisabled])
 
   const onToggleIsActive = useCallback(() => setBlackoutState({...blackoutState, isActive: !blackoutState.isActive}), [blackoutState])
 

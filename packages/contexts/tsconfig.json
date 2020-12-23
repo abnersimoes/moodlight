@@ -1,28 +1,8 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "module": "esnext",
     "outDir": "dist",
-    "rootDir": "src",
     "declaration": true,
-    "types": ["node"],
-    "baseUrl": "./",
-    "typeRoots": [
-      "../../node_modules/@types",
-      "../../typings",
-      "node_modules/@types",
-    ]
   },
-  "include": [
-    "../../typings",
-    "../../node_modules/@types",
-    "node_modules/@types",
-    "src/**/*",
-  ],
-  "exclude": [
-    "../../node-modules/**",
-    "../app/**",
-    "../site/**",
-    "node_modules/**",
-    "src/**/__test__/**/*",
-  ]
 }
