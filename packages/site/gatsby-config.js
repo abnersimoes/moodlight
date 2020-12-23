@@ -34,12 +34,12 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
+        name: 'moodlight',
+        short_name: 'moodlight',
         start_url: '/',
         background_color: '#333333',
         theme_color: '#333333',
-        display: 'minimal-ui',
+        display: 'fullscreen',
         icon: 'static/img/icon-manifest.png',
       },
     },
