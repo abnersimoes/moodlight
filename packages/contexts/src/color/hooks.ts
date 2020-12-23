@@ -1,9 +1,9 @@
 import {useContext, useEffect, useState} from 'react'
+import {colors, colorsContrastWithBlack} from '../constants/colors'
 import {useSaturate} from '../saturate/hooks'
 import {useBlackout} from '../blackout/hooks'
 import {useLoop} from '../loop/hooks'
 import {ColorState, SetColorState} from './types'
-import {colors, colorsContrastWithBlack} from './constants'
 import ColorContext from '.'
 
 export function useColor(): [ColorState, SetColorState] {
