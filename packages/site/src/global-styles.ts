@@ -54,6 +54,10 @@ export default createGlobalStyle`
     height: 100%
   }
 
+  input {
+    -webkit-appearance: none;
+  }
+
   input[type="number"] {
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
