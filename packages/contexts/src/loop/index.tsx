@@ -15,9 +15,10 @@ const DEFAULT_VALUE = {
 const LoopContext = createContext<LoopContextProps>(DEFAULT_VALUE)
 
 function LoopContextProvider({children}) {
-  const loopIsActive = JSON.parse(localStorage.getItem(LOOP_IS_ACTIVE))
+  const isBrowser = typeof window !== 'undefined'
+  const loopIsActive = isBrowser ? JSON.parse(localStorage.getItem(LOOP_IS_ACTIVE)) : null
   const isActive = loopIsActive !== null ? loopIsActive : DEFAULT_VALUE.loopState.isActive
-  const time = localStorage.getItem(LOOP_TIME) || DEFAULT_VALUE.loopState.time
+  const time = isBrowser ? localStorage.getItem(LOOP_TIME) : DEFAULT_VALUE.loopState.time
 
   const [loopState, setLoopState] = useState({...DEFAULT_VALUE.loopState, isActive, time})
 

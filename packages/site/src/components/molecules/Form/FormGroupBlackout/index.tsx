@@ -18,11 +18,14 @@ const FormGroupBlackout = () => {
   const [{current: color, contrastColor}] = useColor()
   const {isActive, timeToEnabled, timeToDisabled} = blackoutState
   const [minValue] = useState(0.25)
+  const [isBrowser] = useState(typeof window !== 'undefined')
 
   useEffect(() => {
-    localStorage.setItem(BLACKOUT_IS_ACTIVE, `${blackoutState.isActive}`)
-    localStorage.setItem(BLACKOUT_TIME_TO_ENABLED, blackoutState.timeToEnabled)
-    localStorage.setItem(BLACKOUT_TIME_TO_DISABLED, blackoutState.timeToDisabled)
+    if (isBrowser) {
+      localStorage.setItem(BLACKOUT_IS_ACTIVE, `${blackoutState.isActive}`)
+      localStorage.setItem(BLACKOUT_TIME_TO_ENABLED, blackoutState.timeToEnabled)
+      localStorage.setItem(BLACKOUT_TIME_TO_DISABLED, blackoutState.timeToDisabled)
+    }
   }, [blackoutState.isActive, blackoutState.timeToEnabled, blackoutState.timeToDisabled])
 
   const onToggleIsActive = useCallback(() => setBlackoutState({...blackoutState, isActive: !blackoutState.isActive}), [blackoutState])

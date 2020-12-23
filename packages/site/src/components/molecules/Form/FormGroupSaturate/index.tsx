@@ -15,11 +15,14 @@ const FormGroupSaturate = () => {
   const [saturateState, setSaturateState] = useSaturate()
   const [isMinLvl, setIsMinLvl] = useState(true)
   const [isMaxLvl, setIsMaxLvl] = useState(true)
+  const [isBrowser] = useState(typeof window !== 'undefined')
 
   useMemo(() => {
     const {lvl, min, max} = saturateState
 
-    localStorage.setItem(SATURATE_LVL, `${lvl}`)
+    if (isBrowser) {
+      localStorage.setItem(SATURATE_LVL, `${lvl}`)
+    }
 
     setIsMinLvl(lvl <= min)
     setIsMaxLvl(lvl >= max)

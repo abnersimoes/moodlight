@@ -15,10 +15,13 @@ const FormGroupLoop = () => {
   const [{current: color, contrastColor}] = useColor()
   const {isActive, time} = loopState
   const [minValue] = useState(3)
+  const [isBrowser] = useState(typeof window !== 'undefined')
 
   useEffect(() => {
-    localStorage.setItem(LOOP_IS_ACTIVE, `${loopState.isActive}`)
-    localStorage.setItem(LOOP_TIME, loopState.time)
+    if (isBrowser) {
+      localStorage.setItem(LOOP_IS_ACTIVE, `${loopState.isActive}`)
+      localStorage.setItem(LOOP_TIME, loopState.time)
+    }
   }, [loopState.isActive, loopState.time])
 
   const onToggleIsActive = useCallback(() => setLoopState({...loopState, isActive: !loopState.isActive}), [loopState])

@@ -15,10 +15,11 @@ const DEFAULT_VALUE = {
 const BlackoutContext = createContext<BlackoutContextProps>(DEFAULT_VALUE)
 
 function BlackoutContextProvider({children}) {
-  const blackoutIsActive = JSON.parse(localStorage.getItem(BLACKOUT_IS_ACTIVE))
+  const isBrowser = typeof window !== 'undefined'
+  const blackoutIsActive = isBrowser ? JSON.parse(localStorage.getItem(BLACKOUT_IS_ACTIVE)) : null
   const isActive = blackoutIsActive !== null ? blackoutIsActive : DEFAULT_VALUE.blackoutState.isActive
-  const timeToEnabled = localStorage.getItem(BLACKOUT_TIME_TO_ENABLED) || DEFAULT_VALUE.blackoutState.timeToEnabled
-  const timeToDisabled = localStorage.getItem(BLACKOUT_TIME_TO_DISABLED) || DEFAULT_VALUE.blackoutState.timeToDisabled
+  const timeToEnabled = isBrowser ? localStorage.getItem(BLACKOUT_TIME_TO_ENABLED) : DEFAULT_VALUE.blackoutState.timeToEnabled
+  const timeToDisabled = isBrowser ? localStorage.getItem(BLACKOUT_TIME_TO_DISABLED) : DEFAULT_VALUE.blackoutState.timeToDisabled
 
   const [blackoutState, setBlackoutState] = useState({...DEFAULT_VALUE.blackoutState, isActive, timeToEnabled, timeToDisabled})
 
