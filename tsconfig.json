@@ -5,8 +5,8 @@
     "baseUrl": ".",
     "moduleResolution": "node",
     "paths": {
-      "@contexts": ["packages/contexts/src"],
-      "@contexts/*": ["packages/contexts/src/*"],
+      "@store": ["packages/store/src"],
+      "@store/*": ["packages/store/src/*"],
       "@components": ["packages/site/src/components"],
       "@components/*": ["packages/site/src/components/*"],
       "@static": ["packages/site/static"],

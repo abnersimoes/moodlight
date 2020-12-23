@@ -1,5 +1,5 @@
 import React from 'react'
-import {useNav} from '@contexts/nav/hooks'
+import {useNav} from '@store/contexts/nav/hooks'
 import Form from '@components/molecules/Form'
 import NavFooter from '@components/molecules/NavFooter'
 import * as Styled from './styled'

@@ -1,5 +1,6 @@
 import React, {createContext, useState} from 'react'
-import {BLACKOUT_IS_ACTIVE, BLACKOUT_TIME_TO_ENABLED, BLACKOUT_TIME_TO_DISABLED} from '../constants/storage'
+import {BLACKOUT_IS_ACTIVE, BLACKOUT_TIME_TO_ENABLED, BLACKOUT_TIME_TO_DISABLED} from '../../constants/storage'
+import * as StorageHelpers from '../../helpers'
 import {BlackoutContextProps} from './types'
 
 const DEFAULT_VALUE = {
@@ -15,11 +16,10 @@ const DEFAULT_VALUE = {
 const BlackoutContext = createContext<BlackoutContextProps>(DEFAULT_VALUE)
 
 function BlackoutContextProvider({children}) {
-  const isBrowser = typeof window !== 'undefined'
-  const blackoutIsActive = isBrowser ? JSON.parse(localStorage.getItem(BLACKOUT_IS_ACTIVE)) : null
-  const isActive = blackoutIsActive !== null ? blackoutIsActive : DEFAULT_VALUE.blackoutState.isActive
-  const timeToEnabled = isBrowser ? localStorage.getItem(BLACKOUT_TIME_TO_ENABLED) : DEFAULT_VALUE.blackoutState.timeToEnabled
-  const timeToDisabled = isBrowser ? localStorage.getItem(BLACKOUT_TIME_TO_DISABLED) : DEFAULT_VALUE.blackoutState.timeToDisabled
+  const blackoutIsActive = StorageHelpers.getItem(BLACKOUT_IS_ACTIVE)
+  const isActive = JSON.parse(blackoutIsActive) || DEFAULT_VALUE.blackoutState.isActive
+  const timeToEnabled = StorageHelpers.getItem(BLACKOUT_TIME_TO_ENABLED) || DEFAULT_VALUE.blackoutState.timeToEnabled
+  const timeToDisabled = StorageHelpers.getItem(BLACKOUT_TIME_TO_DISABLED) || DEFAULT_VALUE.blackoutState.timeToDisabled
 
   const [blackoutState, setBlackoutState] = useState({...DEFAULT_VALUE.blackoutState, isActive, timeToEnabled, timeToDisabled})
 

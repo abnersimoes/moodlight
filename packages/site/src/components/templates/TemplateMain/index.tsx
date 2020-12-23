@@ -1,7 +1,7 @@
 import React, {ReactNode} from 'react'
-import {useNav} from '@contexts/nav/hooks'
-import {useColor} from '@contexts/color/hooks'
-import {useLoop} from '@contexts/loop/hooks'
+import {useNav} from '@store/contexts/nav/hooks'
+import {useColor} from '@store/contexts/color/hooks'
+import {useLoop} from '@store/contexts/loop/hooks'
 import * as Styled from './styled'
 
 interface TemplateMainProps {

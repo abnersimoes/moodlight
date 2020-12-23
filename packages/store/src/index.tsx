@@ -1,9 +1,9 @@
 import React from 'react'
-import {LoopContextProvider} from './loop'
-import {BlackoutContextProvider} from './blackout'
-import {SaturateContextProvider} from './saturate'
-import {ColorContextProvider} from './color'
-import {NavContextProvider} from './nav'
+import {LoopContextProvider} from './contexts/loop'
+import {BlackoutContextProvider} from './contexts/blackout'
+import {SaturateContextProvider} from './contexts/saturate'
+import {ColorContextProvider} from './contexts/color'
+import {NavContextProvider} from './contexts/nav'
 
 function GlobalContext({children}) {
   return (

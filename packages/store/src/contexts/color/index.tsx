@@ -1,5 +1,5 @@
 import React, {createContext, useState} from 'react'
-import {colors} from '../constants/colors'
+import {colors} from '../../constants/colors'
 import {ColorContextProps} from './types'
 
 const [, initialPalette] = colors

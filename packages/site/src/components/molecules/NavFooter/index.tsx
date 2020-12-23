@@ -1,9 +1,9 @@
 import React, {useState, useCallback} from 'react'
-import {useColor} from '@contexts/color/hooks'
+import {useColor} from '@store/contexts/color/hooks'
+import {useLoop} from '@store/contexts/loop/hooks'
 import {Grid, Col} from '@components/atoms/Grid'
 import ButtonFullscreen from './ButtonFullscreen'
 import LinkRepo from '../LinkRepo'
-import {useLoop} from '@contexts/loop/hooks'
 
 const NavFooter = () => {
   const [{current: color, contrastColor}] = useColor()

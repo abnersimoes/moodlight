@@ -1,5 +1,5 @@
 import {useContext, useEffect, useState} from 'react'
-import {colors, colorsContrastWithBlack} from '../constants/colors'
+import {colors, colorsContrastWithBlack} from '../../constants/colors'
 import {useSaturate} from '../saturate/hooks'
 import {useBlackout} from '../blackout/hooks'
 import {useLoop} from '../loop/hooks'
