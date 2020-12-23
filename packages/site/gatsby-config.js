@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: '🎨',
+    title: '✨',
     description: 'Application with color loop control',
     author: '@absimoess',
   },

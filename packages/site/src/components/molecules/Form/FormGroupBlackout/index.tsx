@@ -3,6 +3,7 @@ import {BLACKOUT_IS_ACTIVE, BLACKOUT_TIME_TO_ENABLED, BLACKOUT_TIME_TO_DISABLED}
 import {useColor} from '@store/contexts/color/hooks'
 import {useLoop} from '@store/contexts/loop/hooks'
 import {useBlackout} from '@store/contexts/blackout/hooks'
+import {getIsBrowser} from '@store/helpers'
 import {Col} from '@components/atoms/Grid'
 import FormFieldNumber from '@components/atoms/FormFieldNumber'
 import * as Styled from '../styled'
@@ -18,7 +19,7 @@ const FormGroupBlackout = () => {
   const [{current: color, contrastColor}] = useColor()
   const {isActive, timeToEnabled, timeToDisabled} = blackoutState
   const [minValue] = useState(0.25)
-  const [isBrowser] = useState(typeof window !== 'undefined')
+  const [isBrowser] = useState(getIsBrowser())
 
   useEffect(() => {
     if (isBrowser) {

@@ -2,6 +2,7 @@ import React, {useCallback, useEffect, useState} from 'react'
 import {LOOP_IS_ACTIVE, LOOP_TIME} from '@store/constants/storage'
 import {useLoop} from '@store/contexts/loop/hooks'
 import {useColor} from '@store/contexts/color/hooks'
+import {getIsBrowser} from '@store/helpers'
 import {Col} from '@components/atoms/Grid'
 import FormFieldNumber from '@components/atoms/FormFieldNumber'
 import * as Styled from '../styled'
@@ -15,7 +16,7 @@ const FormGroupLoop = () => {
   const [{current: color, contrastColor}] = useColor()
   const {isActive, time} = loopState
   const [minValue] = useState(3)
-  const [isBrowser] = useState(typeof window !== 'undefined')
+  const [isBrowser] = useState(getIsBrowser())
 
   useEffect(() => {
     if (isBrowser) {

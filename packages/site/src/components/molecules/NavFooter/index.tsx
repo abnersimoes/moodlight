@@ -1,6 +1,7 @@
 import React, {useState, useCallback} from 'react'
 import {useColor} from '@store/contexts/color/hooks'
 import {useLoop} from '@store/contexts/loop/hooks'
+import {getIsBrowser} from '@store/helpers'
 import {Grid, Col} from '@components/atoms/Grid'
 import ButtonFullscreen from './ButtonFullscreen'
 import LinkRepo from '../LinkRepo'
@@ -9,9 +10,10 @@ const NavFooter = () => {
   const [{current: color, contrastColor}] = useColor()
   const [{transition}] = useLoop()
   const [isFullscreenEnabled, setIsFullscreenEnabled] = useState(false)
-  let isFullscreenSupported
+  const [isBrowser] = useState(getIsBrowser())
+  let isFullscreenSupported: boolean
 
-  if (typeof window !== 'undefined') {
+  if (isBrowser) {
     isFullscreenSupported = !!document.body.requestFullscreen
   }
 

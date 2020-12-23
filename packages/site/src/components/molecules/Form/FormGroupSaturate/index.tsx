@@ -3,6 +3,7 @@ import {SATURATE_LVL} from '@store/constants/storage'
 import {useColor} from '@store/contexts/color/hooks'
 import {useSaturate} from '@store/contexts/saturate/hooks'
 import {useLoop} from '@store/contexts/loop/hooks'
+import {getIsBrowser} from '@store/helpers'
 import {Col} from '@components/atoms/Grid'
 import * as Styled from '../styled'
 import ButtonSaturateHigh from './ButtonSaturateHigh'
@@ -15,7 +16,7 @@ const FormGroupSaturate = () => {
   const [saturateState, setSaturateState] = useSaturate()
   const [isMinLvl, setIsMinLvl] = useState(true)
   const [isMaxLvl, setIsMaxLvl] = useState(true)
-  const [isBrowser] = useState(typeof window !== 'undefined')
+  const [isBrowser] = useState(getIsBrowser())
 
   useMemo(() => {
     const {lvl, min, max} = saturateState
