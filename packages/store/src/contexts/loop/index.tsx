@@ -3,10 +3,13 @@ import {LOOP_IS_ACTIVE, LOOP_TIME} from '../../constants/storage'
 import * as StorageHelpers from '../../helpers'
 import {LoopContextProps} from './types'
 
+const storageIsActive = StorageHelpers.getItem(LOOP_IS_ACTIVE)
+const storageTime = StorageHelpers.getItem(LOOP_TIME)
+
 const DEFAULT_VALUE = {
   loopState: {
-    isActive: true,
-    time: '36',
+    isActive: storageIsActive ? JSON.parse(storageIsActive) : true,
+    time: storageTime ? storageTime : '36',
     indexPalette: 0,
     transition: 1,
   },
@@ -16,11 +19,7 @@ const DEFAULT_VALUE = {
 const LoopContext = createContext<LoopContextProps>(DEFAULT_VALUE)
 
 function LoopContextProvider({children}) {
-  const loopIsActive = StorageHelpers.getItem(LOOP_IS_ACTIVE)
-  const isActive = JSON.parse(loopIsActive) || DEFAULT_VALUE.loopState.isActive
-  const time = StorageHelpers.getItem(LOOP_TIME) || DEFAULT_VALUE.loopState.time
-
-  const [loopState, setLoopState] = useState({...DEFAULT_VALUE.loopState, isActive, time})
+  const [loopState, setLoopState] = useState(DEFAULT_VALUE.loopState)
 
   return (
     <LoopContext.Provider
