@@ -2,9 +2,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
     'eslint:recommended',
-    'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
   ],
   settings: {
@@ -17,7 +15,10 @@ module.exports = {
     node: true,
     es6: true,
   },
-  plugins: ['@typescript-eslint', 'react'],
+  plugins: [
+    '@typescript-eslint',
+    'react',
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,

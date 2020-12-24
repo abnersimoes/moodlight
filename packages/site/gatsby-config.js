@@ -3,6 +3,8 @@ module.exports = {
     title: '✨',
     description: 'Application with color loop control',
     author: '@absimoess',
+    url: 'https://moodlight.me',
+    image: '/img/og-image.png',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

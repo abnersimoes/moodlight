@@ -29,12 +29,15 @@ function SEO({title, description, lang = 'pt-BR', meta = []}: SEOProps) {
             title
             description
             author
+            url
+            image
           }
         }
       }
     `
   )
 
+  const {image, url} = site.siteMetadata
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
 
@@ -63,6 +66,14 @@ function SEO({title, description, lang = 'pt-BR', meta = []}: SEOProps) {
           content: `website`,
         },
         {
+          property: `og:url`,
+          content: url,
+        },
+        {
+          property: `og:image`,
+          content: image,
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },
@@ -77,6 +88,14 @@ function SEO({title, description, lang = 'pt-BR', meta = []}: SEOProps) {
         {
           name: `twitter:description`,
           content: metaDescription,
+        },
+        {
+          name: `twitter:url`,
+          content: url,
+        },
+        {
+          name: `twitter:image`,
+          content: image,
         },
       ].concat(meta)}
     />
