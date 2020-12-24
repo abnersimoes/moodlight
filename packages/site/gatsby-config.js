@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: '✨',
-    description: 'Application with color loop control',
+    description: 'Colors loop application',
     author: '@absimoess',
     url: 'https://moodlight.me',
     image: '/img/og-image.png',

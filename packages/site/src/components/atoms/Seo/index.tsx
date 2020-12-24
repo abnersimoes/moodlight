@@ -70,10 +70,6 @@ function SEO({title, description, lang = 'pt-BR', meta = []}: SEOProps) {
           content: url,
         },
         {
-          property: `og:image`,
-          content: image,
-        },
-        {
           name: `twitter:card`,
           content: `summary`,
         },
