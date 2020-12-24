@@ -44,24 +44,18 @@ export default createGlobalStyle`
     font-size: 16px;
     color: white;
     font-family: 'Oswald Bold', Arial, sans-serif;
-    background-color: black;
   }
 
   html,
   body,
   #___gatsby,
   #gatsby-focus-wrapper {
-    height: 100%
+    height: 100%;
+    height: 100vh;
   }
 
   input {
     -webkit-appearance: none;
-  }
-
-  input[type="number"] {
-    -webkit-appearance: textfield;
-    -moz-appearance: textfield;
-    appearance: textfield;
   }
 
   input[type=number]::-webkit-inner-spin-button,
