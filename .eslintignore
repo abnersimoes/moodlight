@@ -1,0 +1,8 @@
+node_modules
+*.js
+*.log
+*.json
+*.png
+*.ttf
+*.svg
+yarn.lock

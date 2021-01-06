@@ -20,11 +20,17 @@ module.exports = {
     'react',
   ],
   parserOptions: {
+    project: [
+      './packages/app/tsconfig.json',
+      './packages/site/tsconfig.json',
+      './packages/store/tsconfig.json',
+    ],
+    tsconfigRootDir: __dirname,
+    sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 2018,
-    sourceType: 'module',
   },
   rules: {
     'react/prop-types': 'off',
@@ -39,4 +45,12 @@ module.exports = {
       },
     },
   ],
+  settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    react: {
+      version: 'detect',
+    },
+  },
 }
