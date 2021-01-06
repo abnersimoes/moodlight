@@ -1,4 +1,11 @@
-import {Blackout, BlackoutActions, SET_IS_ACTIVE_BLACKOUT, SET_IS_ENABLED_BLACKOUT, SET_TIME_TO_ENABLED_BLACKOUT, SET_TIME_TO_DISABLED_BLACKOUT} from '../types/blackout'
+import {
+  Blackout,
+  BlackoutActions,
+  SET_IS_ACTIVE_BLACKOUT,
+  SET_IS_ENABLED_BLACKOUT,
+  SET_TIME_TO_ENABLED_BLACKOUT,
+  SET_TIME_TO_DISABLED_BLACKOUT,
+} from '../types/blackout'
 import {BLACKOUT_IS_ACTIVE, BLACKOUT_TIME_TO_ENABLED, BLACKOUT_TIME_TO_DISABLED} from '../constants/storage'
 import * as StorageHelpers from '../helpers'
 

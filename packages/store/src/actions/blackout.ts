@@ -1,4 +1,10 @@
-import {BlackoutActions, SET_IS_ACTIVE_BLACKOUT, SET_IS_ENABLED_BLACKOUT, SET_TIME_TO_ENABLED_BLACKOUT, SET_TIME_TO_DISABLED_BLACKOUT} from '../types/blackout'
+import {
+  BlackoutActions,
+  SET_IS_ACTIVE_BLACKOUT,
+  SET_IS_ENABLED_BLACKOUT,
+  SET_TIME_TO_ENABLED_BLACKOUT,
+  SET_TIME_TO_DISABLED_BLACKOUT,
+} from '../types/blackout'
 
 export function setIsActive(payload: boolean): BlackoutActions {
   return {

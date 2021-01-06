@@ -7,9 +7,5 @@ interface StoreProvider {
 }
 
 export default ({children}: StoreProvider) => {
-  return (
-    <Provider store={store}>
-      {children}
-    </Provider>
-  )
+  return <Provider store={store}>{children}</Provider>
 }

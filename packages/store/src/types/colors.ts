@@ -23,5 +23,4 @@ interface SetPaletteColorAction {
   payload: string[]
 }
 
-
 export type ColorsActions = SetCurrentColorAction | SetContrastColorAction | SetPaletteColorAction
