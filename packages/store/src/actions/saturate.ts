@@ -3,7 +3,7 @@ import {SaturateActions, SET_MIN_SATURATE, SET_MAX_SATURATE, SET_LVL_SATURATE} f
 export function setMinSaturate(payload: number): SaturateActions {
   return {
     type: SET_MIN_SATURATE,
-    payload: payload,
+    payload,
   }
 }
 

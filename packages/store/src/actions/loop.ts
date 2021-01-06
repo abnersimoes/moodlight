@@ -3,7 +3,7 @@ import {LoopActions, SET_IS_ACTIVE_LOOP, SET_TIME_LOOP, SET_INDEX_PALETTE_LOOP, 
 export function setIsActiveLoop(payload: boolean): LoopActions {
   return {
     type: SET_IS_ACTIVE_LOOP,
-    payload: payload,
+    payload,
   }
 }
 

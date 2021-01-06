@@ -3,7 +3,7 @@ import {ColorsActions, SET_CURRENT_COLOR, SET_CONTRAST_COLOR, SET_PALETTE_COLOR}
 export function setCurrentColor(payload: string): ColorsActions {
   return {
     type: SET_CURRENT_COLOR,
-    payload: payload,
+    payload,
   }
 }
 

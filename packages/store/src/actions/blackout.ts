@@ -9,7 +9,7 @@ import {
 export function setIsActiveBlackout(payload: boolean): BlackoutActions {
   return {
     type: SET_IS_ACTIVE_BLACKOUT,
-    payload: payload,
+    payload,
   }
 }
 
