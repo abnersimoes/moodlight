@@ -14,6 +14,7 @@ module.exports = {
       options: {
         alias: {
           '@store': '../store/src',
+          '@contexts': '../contexts/src',
           '@components': './src/components',
           '@static': './static',
         },

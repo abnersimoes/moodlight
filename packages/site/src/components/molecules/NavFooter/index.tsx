@@ -1,6 +1,6 @@
 import React, {useState, useCallback} from 'react'
-import {useColor} from '@store/contexts/color/hooks'
-import {useLoop} from '@store/contexts/loop/hooks'
+import {useColor} from '@contexts/contexts/color/hooks'
+import {useLoop} from '@contexts/contexts/loop/hooks'
 import {getIsBrowser} from '@store/helpers'
 import {Grid, Col} from '@components/atoms/Grid'
 import ButtonFullscreen from './ButtonFullscreen'

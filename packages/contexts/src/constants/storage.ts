@@ -1,0 +1,6 @@
+export const SATURATE_LVL = 'saturate-lvl'
+export const LOOP_IS_ACTIVE = 'loop-is-active'
+export const LOOP_TIME = 'loop-time'
+export const BLACKOUT_IS_ACTIVE = 'blackout-is-active'
+export const BLACKOUT_TIME_TO_ENABLED = 'blackout-time-to-enabled'
+export const BLACKOUT_TIME_TO_DISABLED = 'blackout-time-to-disabled'

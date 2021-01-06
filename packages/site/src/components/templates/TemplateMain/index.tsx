@@ -1,7 +1,9 @@
 import React, {ReactNode} from 'react'
-import {useNav} from '@store/contexts/nav/hooks'
-import {useColor} from '@store/contexts/color/hooks'
-import {useLoop} from '@store/contexts/loop/hooks'
+import {useSelector} from 'react-redux'
+import {RootState} from '@store/reducers'
+import {useNav} from '@contexts/contexts/nav/hooks'
+import {useColor} from '@contexts/contexts/color/hooks'
+import {useLoop} from '@contexts/contexts/loop/hooks'
 import * as Styled from './styled'
 
 interface TemplateMainProps {
@@ -9,8 +11,9 @@ interface TemplateMainProps {
 }
 
 function TemplateMain({children}: TemplateMainProps) {
+  const {current: color} = useSelector(({colors}: RootState) => colors)
   const [nav, setNav] = useNav()
-  const [{current: color}] = useColor()
+  // const [{current: color}] = useColor()
   const [{transition}] = useLoop()
 
   return (

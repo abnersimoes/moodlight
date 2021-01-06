@@ -1,22 +1,15 @@
-import React from 'react'
-import {LoopContextProvider} from './contexts/loop'
-import {BlackoutContextProvider} from './contexts/blackout'
-import {SaturateContextProvider} from './contexts/saturate'
-import {ColorContextProvider} from './contexts/color'
-import {NavContextProvider} from './contexts/nav'
+import React, {ReactElement} from 'react'
+import {Provider} from 'react-redux'
+import store from './store'
 
-function GlobalContext({children}) {
-  return (
-    <LoopContextProvider>
-      <BlackoutContextProvider>
-        <SaturateContextProvider>
-          <ColorContextProvider>
-            <NavContextProvider>{children}</NavContextProvider>
-          </ColorContextProvider>
-        </SaturateContextProvider>
-      </BlackoutContextProvider>
-    </LoopContextProvider>
-  )
+interface StoreProvider {
+  children: ReactElement
 }
 
-export default GlobalContext
+export default ({children}: StoreProvider) => {
+  return (
+    <Provider store={store}>
+      {children}
+    </Provider>
+  )
+}

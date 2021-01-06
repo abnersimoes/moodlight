@@ -8,6 +8,7 @@
     "moduleResolution": "node",
     "paths": {
       "@store/*": ["./packages/store/src/*"],
+      "@contexts/*": ["./packages/contexts/src/*"],
       "@components/*": ["./packages/site/src/components/*"],
       "@static/*": ["./packages/site/static/*"],
     },

@@ -1,4 +1,5 @@
 import React, {ReactElement} from 'react'
+import GlobalContexts from '../contexts/src'
 import GlobalStore from '../store/src'
 import GlobalStyle from './src/global-styles'
 
@@ -10,8 +11,10 @@ interface WrapWithProviderProps {
 export default ({element}: WrapWithProviderProps) => {
   return (
     <GlobalStore>
-      <GlobalStyle />
-      {element}
+      <GlobalContexts>
+        <GlobalStyle />
+        {element}
+      </GlobalContexts>
     </GlobalStore>
   )
 }
