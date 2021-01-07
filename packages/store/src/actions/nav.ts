@@ -1,15 +1,8 @@
-import {NavActions, SET_IS_ACTIVE_NAV, SET_IS_TRIGGED_NAV} from '../types/nav'
+import {Nav, NavActions, SET_VISIBILITY_NAV} from '../types/nav'
 
-export function setIsActiveNav(payload: boolean): NavActions {
+export function setNavVisibility(payload: Nav): NavActions {
   return {
-    type: SET_IS_ACTIVE_NAV,
-    payload,
-  }
-}
-
-export function setIsTriggedNav(payload: boolean): NavActions {
-  return {
-    type: SET_IS_TRIGGED_NAV,
+    type: SET_VISIBILITY_NAV,
     payload,
   }
 }

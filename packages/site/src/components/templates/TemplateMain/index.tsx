@@ -1,7 +1,7 @@
 import React, {useCallback, ReactNode} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {RootState} from '@store/reducers'
-import {setIsTriggedNav} from '@store/actions'
+import {setNavVisibility} from '@store/actions'
 import * as Styled from './styled'
 
 interface TemplateMainProps {
@@ -15,7 +15,7 @@ function TemplateMain({children}: TemplateMainProps) {
   } = useSelector((state: RootState) => state)
   const dispatch = useDispatch()
 
-  const onSetIstriggedNav = useCallback(() => dispatch(setIsTriggedNav(true)), [])
+  const onSetIstriggedNav = useCallback(() => dispatch(setNavVisibility({isTrigged: true})), [])
 
   return (
     <Styled.TemplateMainWrapper color={color} transition={transition} onClick={onSetIstriggedNav}>

@@ -1,19 +1,13 @@
-export const SET_IS_ACTIVE_NAV = 'NAV/SET_IS_ACTIVE'
-export const SET_IS_TRIGGED_NAV = 'NAV/SET_IS_TRIGGED'
+export const SET_VISIBILITY_NAV = 'NAV/SET_VISIBILITY'
 
 export interface Nav {
-  isActive: boolean
-  isTrigged: boolean
+  isActive?: boolean
+  isTrigged?: boolean
 }
 
-interface SetIsActiveNavAction {
-  type: typeof SET_IS_ACTIVE_NAV
-  payload: boolean
+interface SetNavAction {
+  type: typeof SET_VISIBILITY_NAV
+  payload: Nav
 }
 
-interface SetIsTriggedNavAction {
-  type: typeof SET_IS_TRIGGED_NAV
-  payload: boolean
-}
-
-export type NavActions = SetIsActiveNavAction | SetIsTriggedNavAction
+export type NavActions = SetNavAction

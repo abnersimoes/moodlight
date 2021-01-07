@@ -1,11 +1,11 @@
-import {setIsTriggedNav} from './nav'
+import {setNavVisibility} from './nav'
 import {setCurrentColor, setContrastColor, setPaletteColors} from './colors'
 import {setIsActiveLoop, setTimeLoop} from './loop'
 import {setIsActiveBlackout, setTimeToEnabledBlackout, setTimeToDisabledBlackout} from './blackout'
 import {setLvlSaturate} from './saturate'
 
 export {
-  setIsTriggedNav,
+  setNavVisibility,
   setCurrentColor,
   setContrastColor,
   setPaletteColors,
