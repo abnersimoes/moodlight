@@ -1,18 +1,20 @@
-import {useContext, useEffect, useState} from 'react'
-import {LoopState, SetLoopState} from './types'
-import LoopContext from '.'
+import {useEffect, useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {RootState} from '../reducers'
+import {setIndexPaletteLoop} from '../actions'
 
-export function useLoop(): [LoopState, SetLoopState] {
-  const {loopState, setLoopState} = useContext(LoopContext)
+export function useLoop() {
+  const {isActive, transition, indexPalette} = useSelector(({loop}: RootState) => loop)
+  const dispatch = useDispatch()
+
   const [nextIndexPalette, setNextIndexPalette] = useState(1)
   const lastIndexOfPalette = 11
 
   useEffect(() => {
-    setLoopState({...loopState, indexPalette: nextIndexPalette})
+    dispatch(setIndexPaletteLoop(nextIndexPalette))
   }, [])
 
   useEffect(() => {
-    const {isActive, transition, indexPalette} = loopState
     const loopTime = transition * 1000
     let loopTimeout: NodeJS.Timeout
 
@@ -21,7 +23,7 @@ export function useLoop(): [LoopState, SetLoopState] {
 
       if (nextIndex !== nextIndexPalette) {
         loopTimeout = setTimeout(() => {
-          setLoopState({...loopState, indexPalette: nextIndex})
+          dispatch(setIndexPaletteLoop(nextIndex))
           setNextIndexPalette(nextIndex)
         }, loopTime)
       }
@@ -30,7 +32,5 @@ export function useLoop(): [LoopState, SetLoopState] {
     return () => {
       if (loopTimeout) clearTimeout(loopTimeout)
     }
-  }, [loopState, nextIndexPalette])
-
-  return [loopState, setLoopState]
+  }, [isActive, transition, indexPalette, nextIndexPalette])
 }

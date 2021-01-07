@@ -1,4 +1,4 @@
-import {Colors, ColorsActions, SET_CURRENT_COLOR, SET_CONTRAST_COLOR, SET_PALETTE_COLOR} from '../types/colors'
+import {Colors, ColorsActions, SET_COLORS, SET_CURRENT_COLOR, SET_CONTRAST_COLOR, SET_PALETTE_COLOR} from '../types/colors'
 import {colors} from '../constants/colors'
 
 const [, initialPalette] = colors
@@ -12,6 +12,8 @@ const initialState = {
 
 const reducer = (state = initialState, action: ColorsActions): Colors => {
   switch (action.type) {
+    case SET_COLORS:
+      return {...state, ...action.payload}
     case SET_CURRENT_COLOR:
       return {...state, current: action.payload}
     case SET_CONTRAST_COLOR:
