@@ -6,10 +6,9 @@
   "author": "Abner Simoes <abner.simoes@hotmail.com>",
   "license": "MIT",
   "scripts": {
-    "site:build": "yarn workspace site gatsby build",
-    "site:develop": "yarn workspace site gatsby develop",
-    "site:start": "yarn workspace site npm run develop",
-    "site:serve": "yarn workspace site gatsby serve",
+    "site:build": "yarn workspace site build",
+    "site:dev": "yarn workspace site develop",
+    "site:serve": "yarn workspace site serve",
     "app:ios": "yarn workspace app ios",
     "clean": "rm -rf node_modules packages/app/node_modules packages/site/node_modules"
   },

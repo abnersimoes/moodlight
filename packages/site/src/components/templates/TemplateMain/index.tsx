@@ -1,9 +1,7 @@
-import React, {ReactNode} from 'react'
-import {useSelector} from 'react-redux'
+import React, {useCallback, ReactNode} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
 import {RootState} from '@store/reducers'
-import {useNav} from '@contexts/contexts/nav/hooks'
-import {useColor} from '@contexts/contexts/color/hooks'
-import {useLoop} from '@contexts/contexts/loop/hooks'
+import {setIsTriggedNav} from '@store/actions'
 import * as Styled from './styled'
 
 interface TemplateMainProps {
@@ -11,13 +9,16 @@ interface TemplateMainProps {
 }
 
 function TemplateMain({children}: TemplateMainProps) {
-  const {current: color} = useSelector(({colors}: RootState) => colors)
-  const [nav, setNav] = useNav()
-  // const [{current: color}] = useColor()
-  const [{transition}] = useLoop()
+  const {
+    colors: {current: color},
+    loop: {transition},
+  } = useSelector((state: RootState) => state)
+  const dispatch = useDispatch()
+
+  const onSetIstriggedNav = useCallback(() => dispatch(setIsTriggedNav(true)), [])
 
   return (
-    <Styled.TemplateMainWrapper color={color} transition={transition} onClick={() => setNav({...nav, isActiveTrigged: true})}>
+    <Styled.TemplateMainWrapper color={color} transition={transition} onClick={onSetIstriggedNav}>
       {children}
     </Styled.TemplateMainWrapper>
   )
