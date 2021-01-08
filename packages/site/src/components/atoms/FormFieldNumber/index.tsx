@@ -7,7 +7,7 @@ import Grid, {Col} from '../Grid'
 import ButtonNumberControl from './ButtonNumberControl'
 import * as Helpers from './helpers'
 
-function FormFieldNumber({name, value, contrastColor, isDisabled, transition, min = 1, max = 120, ...props}: FormFieldProps) {
+function FormFieldNumber({name, value, contrastColor, isDisabled, transition, tabIndex, min = 1, max = 120, ...props}: FormFieldProps) {
   const [minState, setMinState] = useState(1)
   const [minIsDecimal] = useState(min % 1 !== 0)
 
@@ -43,6 +43,7 @@ function FormFieldNumber({name, value, contrastColor, isDisabled, transition, mi
         contrastColor={contrastColor}
         transition={transition}
         isDisabled={isDisabled}
+        tabIndex={tabIndex}
         {...props}
       />
       <Col>
@@ -50,14 +51,16 @@ function FormFieldNumber({name, value, contrastColor, isDisabled, transition, mi
           contrastColor={contrastColor}
           transition={transition}
           isDisabled={isDisabled || parseFloat(value) === max}
-          onClick={onSetUp}>
+          onClick={onSetUp}
+          tabIndex={tabIndex ? tabIndex + 1 : 0}>
           <ArrowUpIcon />
         </ButtonNumberControl>
         <ButtonNumberControl
           contrastColor={contrastColor}
           transition={transition}
           isDisabled={isDisabled || parseFloat(value) === min}
-          onClick={onSetDown}>
+          onClick={onSetDown}
+          tabIndex={tabIndex ? tabIndex + 2 : 1}>
           <ArrowDownIcon />
         </ButtonNumberControl>
       </Col>

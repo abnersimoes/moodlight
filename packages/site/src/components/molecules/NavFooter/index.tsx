@@ -12,25 +12,33 @@ const NavFooter = () => {
     loop: {transition},
   } = useSelector((state: RootState) => state)
 
-  const [isFullscreen, setIsFullscreen] = useState(false)
+  const [isFullscreenActive, setIsFullscreenActive] = useState(false)
   const [isFullscreenSupported, setIsFullscreenSupported] = useState(true)
   const [isBrowser] = useState(getIsBrowser())
 
   useEffect(() => {
-    if (isBrowser) setIsFullscreenSupported(!!document.body.requestFullscreen)
+    if (isBrowser) {
+      const isFullscreenAvailable = document && document?.fullscreenEnabled
+
+      setIsFullscreenSupported(isFullscreenAvailable)
+
+      document.body.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) setIsFullscreenActive(false)
+      })
+    }
   }, [])
 
   const onToggleIsFullscreen = useCallback(() => {
     if (isFullscreenSupported) {
-      setIsFullscreen(!isFullscreen)
+      setIsFullscreenActive(!isFullscreenActive)
 
-      if (isFullscreen && document?.exitFullscreen) {
+      if (isFullscreenActive) {
         return document.exitFullscreen()
       }
 
       return document.body.requestFullscreen()
     }
-  }, [isFullscreen, isFullscreenSupported])
+  }, [isFullscreenSupported, isFullscreenActive])
 
   return (
     <Grid>
@@ -40,8 +48,9 @@ const NavFooter = () => {
             color={color}
             contrastColor={contrast}
             transition={transition}
-            isActive={isFullscreen}
+            isActive={isFullscreenActive}
             onClick={onToggleIsFullscreen}
+            tabIndex={14}
           />
         </Col>
       )}

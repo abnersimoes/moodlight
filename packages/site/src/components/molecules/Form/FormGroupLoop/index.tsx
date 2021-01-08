@@ -39,7 +39,14 @@ const FormGroupLoop = () => {
   return (
     <Styled.Grid>
       <Col>
-        <ButtonLoop color={color} contrastColor={contrast} transition={transition} isActive={isActive} onClick={onToggleIsActive} />
+        <ButtonLoop
+          color={color}
+          contrastColor={contrast}
+          transition={transition}
+          isActive={isActive}
+          onClick={onToggleIsActive}
+          tabIndex={1}
+        />
       </Col>
       <Col flex={1}>
         <FormFieldNumber
@@ -51,6 +58,7 @@ const FormGroupLoop = () => {
           min={minValue}
           isDisabled={!isActive}
           onChange={onSetTime}
+          tabIndex={2}
         />
       </Col>
     </Styled.Grid>

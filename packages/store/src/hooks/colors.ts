@@ -36,7 +36,6 @@ export function useColors() {
       const [colorContrastWithBlack] = colorsContrastWithBlack.filter(color => color === nextColor)
       const contrast = colorContrastWithBlack ? alphaBlack : alphaWhite
 
-      console.log({current, nextColor})
       if (current !== nextColor) {
         dispatch(setColors({current: nextColor, contrast}))
       }

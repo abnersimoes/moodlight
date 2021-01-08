@@ -54,6 +54,7 @@ const FormGroupBlackout = () => {
           isActive={isActive}
           isDisabled={!isActiveLoop}
           onClick={onToggleIsActive}
+          tabIndex={5}
         />
       </Col>
       <Col flex={1}>
@@ -66,6 +67,7 @@ const FormGroupBlackout = () => {
           value={timeToEnabled}
           isDisabled={!isActive}
           onChange={onSetTimeToEnabled}
+          tabIndex={6}
         />
       </Col>
       <Col flex={1}>
@@ -78,6 +80,7 @@ const FormGroupBlackout = () => {
           value={timeToDisabled}
           isDisabled={!isActive}
           onChange={onSetTimeToDisabled}
+          tabIndex={9}
         />
       </Col>
     </Styled.Grid>

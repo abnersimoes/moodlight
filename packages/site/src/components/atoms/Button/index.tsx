@@ -3,7 +3,10 @@ import * as Styled from './styled'
 
 export interface ButtonProps extends Styled.ButtonProps {
   onClick?: () => void
+  onFocus?: () => void
+  onBlur?: () => void
   isDisabled?: boolean
+  tabIndex?: number
 }
 
 export interface ButtonWrapperProps extends ButtonProps {

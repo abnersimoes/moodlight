@@ -39,6 +39,7 @@ const FormGroupSaturate = () => {
           transition={transition}
           isDisabled={isMinLvl}
           onClick={() => onSetSaturateLvl(lvl - 1)}
+          tabIndex={12}
         />
       </Col>
       <Col flex={1}>
@@ -51,6 +52,7 @@ const FormGroupSaturate = () => {
           transition={transition}
           isDisabled={isMaxLvl}
           onClick={() => onSetSaturateLvl(lvl + 1)}
+          tabIndex={13}
         />
       </Col>
     </Styled.Grid>
