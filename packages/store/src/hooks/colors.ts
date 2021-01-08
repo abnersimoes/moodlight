@@ -19,10 +19,6 @@ export function useColors() {
   const paletteLength = 12
 
   useEffect(() => {
-    dispatch(setTransitionLoop(transition))
-  }, [])
-
-  useEffect(() => {
     const transitionLoop = parseInt(time) / paletteLength
 
     dispatch(setTransitionLoop(transitionLoop))
@@ -40,16 +36,10 @@ export function useColors() {
       const [colorContrastWithBlack] = colorsContrastWithBlack.filter(color => color === nextColor)
       const contrast = colorContrastWithBlack ? alphaBlack : alphaWhite
 
+      console.log({current, nextColor})
       if (current !== nextColor) {
         dispatch(setColors({current: nextColor, contrast}))
       }
     }
   }, [current, palette, indexPalette, isBlackoutEnabled])
-
-  useEffect(() => {
-    const lvlNormalized = saturateLvl - 1
-    const palette = colors[lvlNormalized]
-
-    dispatch(setPaletteColors(palette))
-  }, [saturateLvl])
 }

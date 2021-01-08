@@ -38,5 +38,5 @@ export function useBlackout() {
     if (!loop.isActive && blackout.isActive) {
       dispatch(setIsActiveBlackout(false))
     }
-  }, [loop.isActive, blackout])
+  }, [loop.isActive, blackout.isActive])
 }
