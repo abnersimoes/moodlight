@@ -5,6 +5,7 @@ interface ButtonNumberControlProps extends Styled.ButtonNumberControlProps {
   children: ReactNode
   onClick: () => void
   isDisabled?: boolean
+  tabIndex?: number
 }
 
 function ButtonNumberControl({isDisabled, ...props}: ButtonNumberControlProps) {

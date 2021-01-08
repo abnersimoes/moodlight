@@ -1,32 +1,44 @@
-import React, {useState, useCallback} from 'react'
-import {useColor} from '@store/contexts/color/hooks'
-import {useLoop} from '@store/contexts/loop/hooks'
+import React, {useState, useCallback, useEffect} from 'react'
+import {useSelector} from 'react-redux'
+import {RootState} from '@store/reducers'
 import {getIsBrowser} from '@store/helpers'
 import {Grid, Col} from '@components/atoms/Grid'
 import ButtonFullscreen from './ButtonFullscreen'
 import LinkRepo from '../LinkRepo'
 
 const NavFooter = () => {
-  const [{current: color, contrastColor}] = useColor()
-  const [{transition}] = useLoop()
-  const [isFullscreenEnabled, setIsFullscreenEnabled] = useState(false)
+  const {
+    colors: {current: color, contrast},
+    loop: {transition},
+  } = useSelector((state: RootState) => state)
+
+  const [isFullscreenActive, setIsFullscreenActive] = useState(false)
+  const [isFullscreenSupported, setIsFullscreenSupported] = useState(true)
   const [isBrowser] = useState(getIsBrowser())
-  let isFullscreenSupported: boolean
 
-  if (isBrowser) {
-    isFullscreenSupported = !!document.body.requestFullscreen
-  }
+  useEffect(() => {
+    if (isBrowser) {
+      const isFullscreenAvailable = document && document?.fullscreenEnabled
 
-  const onToggleIsFullscreenEnabled = useCallback(() => {
+      setIsFullscreenSupported(isFullscreenAvailable)
+
+      document.body.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) setIsFullscreenActive(false)
+      })
+    }
+  }, [])
+
+  const onToggleIsFullscreen = useCallback(() => {
     if (isFullscreenSupported) {
-      setIsFullscreenEnabled(!isFullscreenEnabled)
-      if (isFullscreenEnabled && document?.exitFullscreen) {
+      setIsFullscreenActive(!isFullscreenActive)
+
+      if (isFullscreenActive) {
         return document.exitFullscreen()
       }
 
       return document.body.requestFullscreen()
     }
-  }, [isFullscreenEnabled])
+  }, [isFullscreenSupported, isFullscreenActive])
 
   return (
     <Grid>
@@ -34,15 +46,16 @@ const NavFooter = () => {
         <Col>
           <ButtonFullscreen
             color={color}
-            contrastColor={contrastColor}
+            contrastColor={contrast}
             transition={transition}
-            isActive={isFullscreenEnabled}
-            onClick={onToggleIsFullscreenEnabled}
+            isActive={isFullscreenActive}
+            onClick={onToggleIsFullscreen}
+            tabIndex={14}
           />
         </Col>
       )}
       <Col flex={1} alignSelf="flex-end">
-        <LinkRepo contrastColor={contrastColor} transition={transition} />
+        <LinkRepo contrastColor={contrast} transition={transition} />
       </Col>
     </Grid>
   )

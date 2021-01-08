@@ -1,0 +1,10 @@
+{
+  "name": "contexts",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Abner Simoes <abner.simoes@hotmail.com>",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}

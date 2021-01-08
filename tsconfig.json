@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
+    "module": "esnext",
     "jsx": "preserve",
+    "declaration": true,
     "esModuleInterop": true,
     "baseUrl": ".",
     "moduleResolution": "node",
     "paths": {
-      "@store": ["packages/store/src"],
-      "@store/*": ["packages/store/src/*"],
-      "@components": ["packages/site/src/components"],
-      "@components/*": ["packages/site/src/components/*"],
-      "@static": ["packages/site/static"],
-      "@static/*": ["packages/site/static/*"],
+      "@store/*": ["./packages/store/src/*"],
+      "@contexts/*": ["./packages/contexts/src/*"],
+      "@components/*": ["./packages/site/src/components/*"],
+      "@static/*": ["./packages/site/static/*"],
     },
     "typeRoots": [
       "typings",
@@ -28,8 +28,9 @@
     "node_modules",
     "packages/site/public",
     "packages/site/.cache",
-    "packages/site/__generated__",
+    "packages/app/__generated__",
     "*/**/node-modules",
     "*/**/src/**/__test__/**/*"
   ]
 }
+

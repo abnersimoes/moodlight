@@ -4,6 +4,7 @@ export interface FormFieldCommonProps {
   color: string
   isDisabled?: boolean
   onChange?: (event: ChangeEvent<HTMLInputElement>) => unknown
+  tabIndex?: number
 }
 
 export interface FormFieldProps extends FormFieldCommonProps {

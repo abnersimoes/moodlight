@@ -14,7 +14,7 @@ export function useLoop(): [LoopState, SetLoopState] {
   useEffect(() => {
     const {isActive, transition, indexPalette} = loopState
     const loopTime = transition * 1000
-    let loopTimeout: number
+    let loopTimeout: NodeJS.Timeout
 
     if (isActive) {
       const nextIndex = indexPalette < lastIndexOfPalette ? indexPalette + 1 : 0
